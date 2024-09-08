@@ -17,25 +17,39 @@ page(template:cover){
            font-bold,
            font-family:Serif,
        }
+       .subtitle2:{
+           color: $palette[2]
+           origin : center,
+           position : (50,60),
+           font-size:13%g,
+           font-bold,
+           font-family:Serif,
+       }
        .author:{
            color: $palette[1],
            origin : center,
-           position : (50,60),
+           position : (50,70),
            font-size:8%g,
            font-bold,
+       }
+       .author2:{
+           color: $palette[2],
+           origin : center,
+           position : (50,73),
+           font-size:6%g,
        }
        .date:{
            color: $palette[1],
            origin : center,
-           position : (50,65),
-           font-size:8%g,
+           position : (50,78),
+           font-size:6%g,
            font-bold,
        }
        .version:{
            color: $palette[1],
            origin : center,
-           position : (50,69),
-           font-size:8%g,
+           position : (50,82),
+           font-size:6%g,
            font-bold,
        },
     }
