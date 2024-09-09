@@ -163,5 +163,75 @@ page(template:normal){
         }
     }
 
+    stack(template:"TwoColumnsA",
+          position : (0,22),
+          size     : (50,72),
+          origin : top-left,
+          font-size:20,
+          color: "#6b3a09",
+          font-bold
+    ){
+        styles:{
+            "*" :{
+                foreground-color:dark-gray
+            }
+        }
+    }
+    stack(template:"TwoColumnsB",
+          position : (50,22),
+          size     : (50,72),
+          origin : top-left,
+          font-size:20,
+          color: "#6b3a09",
+          font-bold
+    ){
+        styles:{
+            "*" :{
+                foreground-color:dark-gray
+            }
+        }
+    }
 
+    stack(template:"ThreeColumnsA",
+          position : (0,22),
+          size     : (33,72),
+          origin : top-left,
+          font-size:20,
+          color: "#6b3a09",
+          font-bold
+    ){
+        styles:{
+            "*" :{
+                foreground-color:dark-gray
+            }
+        }
+    }
+    stack(template:"ThreeColumnsB",
+          position : (33,22),
+          size     : (33,72),
+          origin : top-left,
+          font-size:20,
+          color: "#6b3a09",
+          font-bold
+    ){
+        styles:{
+            "*" :{
+                foreground-color:dark-gray
+            }
+        }
+    }
+    stack(template:"ThreeColumnsC",
+          position : (66,22),
+          size     : (33,72),
+          origin : top-left,
+          font-size:20,
+          color: "#6b3a09",
+          font-bold
+    ){
+        styles:{
+            "*" :{
+                foreground-color:dark-gray
+            }
+        }
+    }
 }
