@@ -71,5 +71,4 @@ page(template:cover){
        draw-contour
        stroke:{width:5}
    )
-   @Palette{}
 }

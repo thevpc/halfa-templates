@@ -14,7 +14,7 @@ page(template:normal){
         }
     }
 
-    stack(template:"Header",
+    stack(template:"header",
             position : (50,10),
             size     : (100,20),
             origin : center,
@@ -73,7 +73,7 @@ page(template:normal){
         @Palette{}
     }
 
-    stack(template:"HintError",
+    stack(template:"hint-error",
             position : (50,80),
             size     : (80,10),
             origin : center,
@@ -148,7 +148,7 @@ page(template:normal){
 //        image("../images/info.png", position:(95,-40),size:(10,80))
 //    }
 
-    stack(template:"OneColumn",
+    stack(template:"body",
             position : (0,22),
             size     : (100,72),
             origin : top-left,
@@ -163,7 +163,7 @@ page(template:normal){
         }
     }
 
-    stack(template:"TwoColumnsA",
+    stack(template:"body2a",
           position : (0,22),
           size     : (50,72),
           origin : top-left,
@@ -177,7 +177,7 @@ page(template:normal){
             }
         }
     }
-    stack(template:"TwoColumnsB",
+    stack(template:"body2b",
           position : (50,22),
           size     : (50,72),
           origin : top-left,
@@ -192,7 +192,7 @@ page(template:normal){
         }
     }
 
-    stack(template:"ThreeColumnsA",
+    stack(template:"body3a",
           position : (0,22),
           size     : (33,72),
           origin : top-left,
@@ -206,7 +206,7 @@ page(template:normal){
             }
         }
     }
-    stack(template:"ThreeColumnsB",
+    stack(template:"body3b",
           position : (33,22),
           size     : (33,72),
           origin : top-left,
@@ -220,7 +220,7 @@ page(template:normal){
             }
         }
     }
-    stack(template:"ThreeColumnsC",
+    stack(template:"body3c",
           position : (66,22),
           size     : (33,72),
           origin : top-left,

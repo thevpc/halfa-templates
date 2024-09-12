@@ -1,0 +1,8 @@
+@cover page{
+    @(title)    text("${title}")
+    @(subtitle) text("${subtitle}")
+    @(subsubtitle) text("${subsubtitle}")
+    @(author)   text("${author}")
+    @(date)     text("${date}")
+    @(version)  text("${version}")
+}
