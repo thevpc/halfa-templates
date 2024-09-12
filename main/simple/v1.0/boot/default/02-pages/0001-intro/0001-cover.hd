@@ -1,8 +1,10 @@
 @cover page{
-    @(title)    text("${title}")
-    @(subtitle) text("${subtitle}")
-    @(subsubtitle) text("${subsubtitle}")
-    @(author)   text("${author}")
-    @(date)     text("${date}")
-    @(version)  text("${version}")
+    @(title)    text("${template.title}")
+    @(subtitle) text("${template.subtitle}")
+    @(subsubtitle) text("${template.subsubtitle}")
+    @(author)   text("${template.author}")
+    @(email)   text("${template.emailAddress}")
+    @(affiliation)   text("${template.affiliation}")
+    @(date)     text("${template.date}")
+    @(version)  text("${template.version}")
 }

@@ -149,8 +149,8 @@ page(template:normal){
 //    }
 
     stack(template:"body",
-            position : (0,22),
-            size     : (100,72),
+            position : (1,22),
+            size     : (98,72),
             origin : top-left,
             font-size:20,
             color: "#6b3a09",
@@ -164,8 +164,8 @@ page(template:normal){
     }
 
     stack(template:"body2a",
-          position : (0,22),
-          size     : (50,72),
+          position : (1,22),
+          size     : (48,72),
           origin : top-left,
           font-size:20,
           color: "#6b3a09",
@@ -178,8 +178,8 @@ page(template:normal){
         }
     }
     stack(template:"body2b",
-          position : (50,22),
-          size     : (50,72),
+          position : (51,22),
+          size     : (48,72),
           origin : top-left,
           font-size:20,
           color: "#6b3a09",
@@ -193,8 +193,8 @@ page(template:normal){
     }
 
     stack(template:"body3a",
-          position : (0,22),
-          size     : (33,72),
+          position : (1,22),
+          size     : (32,72),
           origin : top-left,
           font-size:20,
           color: "#6b3a09",
@@ -208,7 +208,7 @@ page(template:normal){
     }
     stack(template:"body3b",
           position : (33,22),
-          size     : (33,72),
+          size     : (32,72),
           origin : top-left,
           font-size:20,
           color: "#6b3a09",
@@ -222,7 +222,7 @@ page(template:normal){
     }
     stack(template:"body3c",
           position : (66,22),
-          size     : (33,72),
+          size     : (32,72),
           origin : top-left,
           font-size:20,
           color: "#6b3a09",

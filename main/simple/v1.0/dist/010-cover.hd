@@ -17,7 +17,7 @@ page(template:cover){
            font-bold,
            font-family:Serif,
        }
-       .subtitle2:{
+       .subsubtitle:{
            color: $palette[2]
            origin : center,
            position : (50,60),
@@ -32,24 +32,32 @@ page(template:cover){
            font-size:8%g,
            font-bold,
        }
-       .author2:{
-           color: $palette[2],
+       .email:{
+           color: $palette[1],
            origin : center,
            position : (50,73),
            font-size:6%g,
+           font-bold,
+       }
+       .affiliation:{
+           color: $palette[1],
+           origin : center,
+           position : (50,76),
+           font-size:8%g,
+           font-bold,
        }
        .date:{
            color: $palette[1],
            origin : center,
-           position : (50,78),
-           font-size:6%g,
+           position : (50,85),
+           font-size:5%g,
            font-bold,
        }
        .version:{
            color: $palette[1],
            origin : center,
-           position : (50,82),
-           font-size:6%g,
+           position : (50,87),
+           font-size:5%g,
            font-bold,
        },
     }
