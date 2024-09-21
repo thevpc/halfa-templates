@@ -1,14 +1,14 @@
 import("${template.templateUrl}")
 
 @cover page{
-    @(title)    text("${template.title}")
-    @(subtitle) text("${template.subtitle}")
+    @(title)       text("${template.title}")
+    @(subtitle)    text("${template.subtitle}")
     @(subsubtitle) text("${template.subsubtitle}")
-    @(author)   text("${template.author}")
-    @(email)   text("${template.emailAddress}")
-    @(affiliation)   text("${template.affiliation}")
-    @(date)     text("${template.date}")
-    @(version)  text("${template.version}")
+    @(author)      text("${template.author}")
+    @(email)       text("${template.emailAddress}")
+    @(affiliation) text("${template.affiliation}")
+    @(date)        text("${template.date}")
+    @(version)     text("${template.version}")
 }
 
 @normal page{
