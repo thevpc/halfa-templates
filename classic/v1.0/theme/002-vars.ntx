@@ -1,13 +1,27 @@
 documentTitle:="My Document"
 documentSubtitle:=""
 documentSubsubtitle:=""
-documentAuthor:="me"
-documentAuthorEmail:="me@here.com"
+documentAuthor:="Author"
+documentAuthorEmail:="author@example.com"
 documentAuthorAffiliation:=""
 documentChapter:=""
 documentDate:=""
 documentVersion:="1.0"
 
 themeShowPalette:=false
-documentColorAccent:=1
-documentColors:=arrayLeftRotate(["#26355D","#AF47D2","#DE3163","#1d8147","#FF8F00","#FF7F50","#FFBF00","#FFDB00","#9FE2BF","#40E0D0","#CCCCFF","#6495ED"],either((documentColorAccent - 1),0))
+documentColorAccent:=0
+// Modern harmonious presentation palette (Slate, Sapphire, Indigo, Sky, Emerald, Amber, Crimson)
+documentColors:=arrayLeftRotate([
+    "#2563eb", // 0: Sapphire blue primary accent
+    "#7c3aed", // 1: Violet accent
+    "#059669", // 2: Emerald green accent
+    "#d97706", // 3: Amber accent
+    "#dc2626", // 4: Crimson red accent
+    "#0284c7", // 5: Ocean sky blue accent
+    "#4f46e5", // 6: Royal indigo accent
+    "#0d9488", // 7: Deep teal accent
+    "#9333ea", // 8: Purple accent
+    "#c026d3", // 9: Fuchsia magenta accent
+    "#ea580c", // 10: Burnt orange accent
+    "#1e293b"  // 11: Dark slate accent
+], either(documentColorAccent, 0))

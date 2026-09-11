@@ -1,49 +1,51 @@
 @define thankyou-slide(title:""){
     page{
+        rectangle(background: "#ffffff")
+
         styles{
-           (.title){
-               color: "#dddddd",
-               origin : center,
-               position : (50,30),
-               size : (100,30),
-               font-size: 15%P,
-               font-bold,
-               background: documentColors[1],
-           }
-           (.subtitle){
-               color: "#2c779a"
-               origin : center,
-               position : (50,50),
-               font-size: 10%P,
-               font-bold,
-           }
-           (.author){
-               color: "#112f3d",
-               origin : center,
-               position : (50,60),
-               font-size: 5%P,
-               font-bold,
-           }
-           (.date){
-               color: "#112f3d",
-               origin : center,
-               position : (50,65),
-               font-size: 10%P,
-               font-bold
-           }
-           (.version){
-               color: "#112f3d",
-               origin : center,
-               position : (50,69),
-               font-size: 10%P,
-               font-bold,
-           },
+            (.thankyou-title){
+                color: "#0f172a",
+                origin: center,
+                position: (50, 42),
+                font-size: 9%P,
+                font-family: "SansSerif",
+                font-bold
+            }
+            (.thankyou-subtitle){
+                color: documentColors[1],
+                origin: center,
+                position: (50, 55),
+                font-size: 4.5%P,
+                font-family: "SansSerif",
+                font-bold
+            }
+            (.thankyou-author){
+                color: "#64748b",
+                origin: center,
+                position: (50, 68),
+                font-size: 3.5%P,
+                font-family: "SansSerif"
+            }
+            (.thankyou-email){
+                color: documentColors[1],
+                origin: center,
+                position: (50, 75),
+                font-size: 3.2%P,
+                font-family: "SansSerif"
+            }
         }
-       rectangle(
-           background: white,
-       )
-        @(title)    text(either("$title","Thank you")),
-        @(author)     text(either("${documentAuthor}","")),
+
+        // Center accent line
+        rectangle(
+            position: (40, 62),
+            size: (20, 0.4),
+            background: documentColors[1]
+        )
+
+        @(thankyou-title)    text(either("$title", "Thank You!"))
+        @(thankyou-subtitle) text("Questions & Discussion")
+        @(thankyou-author)   text(either("${documentAuthor}", ""))
+        @(thankyou-email)    text(either("${documentAuthorEmail}", ""))
         body
     }
 }

@@ -1,9 +1,68 @@
-@define image-fig(src,title,legend){
+@define image-fig(src, title, legend){
     @(img) group{
-        rectangle(color:gray23 , stroke:dashed,size:98,round-corner:3)
-        @(image-fig) image(src,size:(95,85),at:center)
+        rectangle(color: "#cbd5e1", stroke: dashed, size: 98, round-corner: 4)
+        @(image-fig) image(src, size: (95, 85), at: center, preserve-aspect-ratio)
         @(image-fig-title) text("$title")
         @(image-fig-legend) text("$legend")
     }
 }
 
+@define card{
+    group(margin: 2){
+        rectangle(background: "#f8fafc", color: "#e2e8f0", draw-contour: true, round-corner: 6)
+        body
+    }
+}
+
+@define callout(title, accentColor, bgColor){
+    group(margin: 2){
+        rectangle(background: bgColor, color: accentColor, draw-contour: true, round-corner: 6)
+        rectangle(background: accentColor, position: (0, 0), size: (1.5, 100))
+        group(position: (3, 2), size: (95, 96)){
+            text(either("$title", ""), font-bold, color: accentColor, font-size: 3.5%P)
+            body
+        }
+    }
+}
+
+@define definition(title){
+    callout(title: either("$title", "Définition"), accentColor: "#0284c7", bgColor: "#f0f9ff"){
+        body
+    }
+}
+
+@define theorem(title){
+    callout(title: either("$title", "Théorème"), accentColor: "#003366", bgColor: "#f1f5f9"){
+        body
+    }
+}
+
+@define example(title){
+    callout(title: either("$title", "Exemple"), accentColor: "#059669", bgColor: "#f0fdf4"){
+        body
+    }
+}
+
+@define remark(title){
+    callout(title: either("$title", "Remarque"), accentColor: "#d97706", bgColor: "#fffbeb"){
+        body
+    }
+}
+
+@define hint-info(title){
+    definition(title: either("$title", "Information")){
+        body
+    }
+}
+
+@define hint-warning(title){
+    remark(title: either("$title", "Attention")){
+        body
+    }
+}
+
+@define hint-error(title){
+    callout(title: either("$title", "Important"), accentColor: "#dc2626", bgColor: "#fef2f2"){
+        body
+    }
+}

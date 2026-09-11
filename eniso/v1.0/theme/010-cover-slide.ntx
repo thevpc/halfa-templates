@@ -1,166 +1,100 @@
 @define cover-slide(){
     page{
         styles{
-           (.title){
-               color: "#dddddd",
-               origin : center,
-               position : (50,25),
-               font-size:16%P,
-               font-family:Monospaced,
-               font-bold,
-               shadow:(color:gray,shift:(0.3,0.5),alpha:0.8)
-           }
-           (.subtitle){
-               color: documentColors[2]
-               origin : center,
-               position : (50,41),
-               font-size:7%P,
-               font-bold,
-               font-family:Serif,
-           }
-           (.subsubtitle){
-               color: documentColors[2]
-               origin : center,
-               position : (50,60),
-               font-size:5%P,
-               font-bold,
-               font-family:Serif,
-           }
-           (.author){
-               color: documentColors[1],
-               origin : center,
-               position : (50,68),
-               font-size:5%P,
-               font-bold,
-           }
-           (.email){
-               color: documentColors[1],
-               origin : center,
-               position : (50,76),
-               font-size:5%P,
-               font-bold,
-           }
-           (.affiliation){
-               color: documentColors[1],
-               origin : center,
-               position : (50,82),
-               font-size:5%P,
-               font-bold,
-           }
-           (.date){
-               color: documentColors[1],
-               origin : center,
-               position : (50,88),
-               font-size:5%P,
-               font-bold,
-           }
-           (.version){
-               color: documentColors[1],
-               origin : center,
-               position : (50,96),
-               font-size:5%P,
-               font-bold,
-           },
+            (.institution){
+                color: "#003366",
+                origin: left,
+                position: (4, 7),
+                font-size: 3%P,
+                font-bold
+            }
+            (.title){
+                color: "#003366",
+                origin: center,
+                position: (50, 38),
+                font-size: 7.5%P,
+                font-family: "SansSerif",
+                font-bold
+            }
+            (.subtitle){
+                color: "#0284c7",
+                origin: center,
+                position: (50, 49),
+                font-size: 4.8%P,
+                font-family: "SansSerif",
+                font-bold
+            }
+            (.subsubtitle){
+                color: "#64748b",
+                origin: center,
+                position: (50, 58),
+                font-size: 3.5%P,
+                font-family: "SansSerif"
+            }
+            (.author){
+                color: "#0f172a",
+                origin: center,
+                position: (50, 75),
+                font-size: 3.8%P,
+                font-bold
+            }
+            (.email){
+                color: "#0284c7",
+                origin: center,
+                position: (50, 81),
+                font-size: 3%P
+            }
+            (.affiliation){
+                color: "#64748b",
+                origin: center,
+                position: (50, 87),
+                font-size: 3%P
+            }
+            (.date){
+                color: "#94a3b8",
+                origin: center,
+                position: (50, 93),
+                font-size: 2.8%P
+            }
         }
-       image("images/eniso-photo.jpg")
-//       rectangle(
-//           origin : center,
-//           position : (50,32),
-//           size : (150,40),
-//           background: rotateSinebowColor(documentColors[1],10),
-//           rotate:-5
-//           draw-contour
-//           stroke:{width:5}
-//       )
-       group(
-           origin : right,
-           position : (99,30),
-           size : (60,40),
-       ){
-//           rectangle(
-//               background: documentColors[2],
-//               position:(-1,-2)
-//           )
-//           rectangle(
-//               background: documentColors[2],
-//               position:(1,3)
-//               shadow
-//           )
-           rectangle(
-               background: documentColors[1],
-//               draw-contour
-//               stroke:{width:5}
-               shadow:{shift:3,radius:5}
-           )
-            text("${documentTitle}"
-                   color: "#dddddd",
-                   origin : center,
-                   position : (50,15),
-                   font-size:10%P,
-                   font-family:Monospaced,
-                   font-bold,
-                   shadow:{shift:(0.5,1)}
-//                   shadow:(color:gray,shift:(0.3,0.5))
-            )
-            text("${documentSubtitle}"
-               color: documentColors[2]
-               origin : center,
-               position : (50,41),
-               font-size:6%P,
-               font-bold,
-               font-family:Serif,
-            )
-            text("${documentSubsubtitle}"
-               color: documentColors[2]
-               origin : center,
-               position : (50,60),
-               font-size:5%P,
-               font-bold,
-               font-family:Serif,
-            )
 
-            text("${documentAuthor}"
-               color: documentColors[3],
-               origin : center,
-               position : (50,68),
-               font-size:3%P,
-               font-bold,
-            )
-            text("${documentAuthorEmail}"
-               color: documentColors[3]
-               origin : center
-               position : (50,76)
-               font-size:3%P
-               font-bold,
-            )
-        }
-//        ellipse(
-//            background: documentColors[4]
-//            size:(71,21)
-//            position:(50,100)
-//            origin:center
-//        )
-//        ellipse(
-//            background: documentColors[3]
-//            size:(70,20)
-//            position:(50,100)
-//            origin:center
-//        )
-         text("${documentDate}"
-                       color: documentColors[3]
-                       origin : center
-                       position : (50,95)
-                       font-size:2%P
-                       font-bold,
-         )
-         text("${documentVersion}"
-                       color: documentColors[3]
-                       origin : center
-                       position : (50,98)
-                       font-size:2%P
-                       font-bold,
-         )
-         image("images/eniso.png", at:bottom-right,size:(20,40),margin:(5,5,0,5), preserve-aspect-ratio)
-       body
+        // Clean white background
+        rectangle(background: "#ffffff")
+
+        // Top institutional navy bar
+        rectangle(
+            position: (0, 0),
+            size: (100, 1.2),
+            background: "#003366"
+        )
+
+        // Institutional header
+        @(institution) text("École Nationale d'Ingénieurs de Sousse · Université de Sousse")
+
+        // ENISo logo top-right
+        image("images/eniso.png", origin: right, position: (96, 7), size: (8, 7), preserve-aspect-ratio)
+
+        // Header separator line
+        rectangle(
+            position: (0, 12),
+            size: (100, 0.2),
+            background: "#e2e8f0"
+        )
+
+        // Middle accent line
+        rectangle(
+            position: (35, 65),
+            size: (30, 0.4),
+            background: "#0284c7"
+        )
+
+        @(title)       text("${documentTitle}")
+        @(subtitle)    text(value: either("${documentSubtitle}", ""))
+        @(subsubtitle) text(either("${documentSubsubtitle}", ""))
+        @(author)      text(either("${documentAuthor}", ""))
+        @(email)       text(either("${documentAuthorEmail}", ""))
+        @(affiliation) text(either("${documentAuthorAffiliation}", ""))
+        @(date)        text(either("${documentDate}", ""))
+        body
     }
 }

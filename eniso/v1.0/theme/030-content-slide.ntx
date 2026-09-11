@@ -1,210 +1,157 @@
-/**
- *
- */
-@define content-slide(title){
-    page(
-        componentName:normalPage
-    ){
-       rectangle(
-           background: white,
-       )
-        styles{
-            .H1:{
-                color: documentColors[4],
-                background: documentColors[1],
-                position : (50,10),
-                origin : center,
-                size : (100,20),
-                font-size:50,
-                font-bold
-            }
-        }
+@define content-slide(title:""){
+    page{
+        rectangle(background: "#ffffff")
+
+        // Top thin navy brand accent
+        rectangle(
+            position: (0, 0),
+            size: (100, 0.8),
+            background: "#003366"
+        )
 
         @define header{
             group(
-                    componentName:normalHeader
-                    position : (50,0),
-                    origin : top,
-                    size     : (100,8),
+                position: (0, 0.8),
+                size: (100, 11),
+                origin: top-left
             ){
-                styles:{
-                    "*" :{
-                        font-size:10,
-                        font-bold,
-                    },
-                    text :{
-                        at:center
-                        color: documentColors[1],
-                        position:(50,50)
-                        font-size:5%P,
-                        shadow:{shift:(0.1,0.5)}
-                    }
-                }
+                // Header bottom divider
                 rectangle(
-                    componentName:normalHeaderBox
-                    background: documentColors[3],
-                    position:(0,0),
-                    size:(100,100)
-                    color: documentColors[1],
+                    position: (0, 98),
+                    size: (100, 2),
+                    background: "#e2e8f0"
                 )
+                // Azure indicator under title
                 rectangle(
-                    componentName:normalHeaderRow
-                    background: documentColors[1],
-                    position:(0,98),
-                    size:(100,5)
+                    position: (0, 96),
+                    size: (10, 4),
+                    background: "#0284c7"
                 )
-                image("images/eniso.png", origin:center, position:(95,50),size:(5,90),preserve-aspect-ratio)
-                text(stringJoin(" ###/### ","##${documentTitle}##","###${documentChapter}###"),color:documentColors[2], font-size:2%P,position:bottom-left,origin:bottom-left,margin:(1,5,5,5))
-                if(themeShowPalette){
-                    Palette()
-                }
-                body
-            }
-        }
 
-        @define hint-error{
-            group(
-                    position : (50,80),
-                    size     : (80,10),
-                    origin : center,
-            ){
-                styles:{
-                    "*" :{
-                        color: documentColors[1],
-                        foreground-color:white,
-                        font-size:20,
-                        font-bold
-                    }
-                }
-                rectangle(
-                    background: documentColors[3],
-                    position:(0,0),
-                    size:(100,100)
-                    color: documentColors[3],
-                    draw-contour:true,
-                    /*stroke:basic(width:4,dash:[20])*/
-                    stroke:zigzag(amplitude:5,wavelength:5,basic(width:4))
+                // Slide Title
+                text(
+                    "${title}",
+                    position: (3, 52),
+                    origin: left,
+                    font-size: 4.6%P,
+                    font-bold,
+                    color: "#003366"
                 )
-                image("images/error.png", position:(95,-40),size:(10,80))
+
+                // Chapter breadcrumb (right)
+                text(
+                    either("${documentChapter}", "${documentTitle}"),
+                    position: (89, 52),
+                    origin: right,
+                    font-size: 2.6%P,
+                    color: "#64748b"
+                )
+
+                // ENISo Logo (top-right)
+                image("images/eniso.png", origin: right, position: (97, 52), size: (6, 6.5), preserve-aspect-ratio)
+
                 body
             }
         }
 
         @define body{
             group(
-                    position : (1,8.5),
-                    size     : (98,86.5),
-                    origin : top-left,
-                    font-size: 5%P,
-                    font-bold
+                position: (3, 13.5),
+                size: (94, 81),
+                origin: top-left,
+                font-size: 4.2%P,
+                color: "#1e293b"
             ){
-                styles:{
-                    "*" :{
-                        foreground-color:dark-gray
-                    }
-                }
                 body
             }
         }
+
         @define body2a{
-            group(position : (1,22),
-                  size     : (48,72),
-                  origin : top-left,
-                  font-size:20,
-                  color: "#6b3a09",
-                  font-bold
+            group(
+                position: (3, 13.5),
+                size: (45, 81),
+                origin: top-left,
+                font-size: 4.2%P,
+                color: "#1e293b"
             ){
-                styles:{
-                    "*" :{
-                        foreground-color:dark-gray
-                    }
-                }
                 body
             }
         }
+
         @define body2b{
             group(
-                  position : (51,22),
-                  size     : (48,72),
-                  origin : top-left,
-                  font-size:20,
-                  color: "#6b3a09",
-                  font-bold
+                position: (52, 13.5),
+                size: (45, 81),
+                origin: top-left,
+                font-size: 4.2%P,
+                color: "#1e293b"
             ){
-                styles:{
-                    "*" :{
-                        foreground-color:dark-gray
-                    }
-                }
                 body
             }
         }
+
         @define body3a{
             group(
-                  position : (1,22),
-                  size     : (32,72),
-                  origin : top-left,
-                  font-size:20,
-                  color: "#6b3a09",
-                  font-bold
+                position: (3, 13.5),
+                size: (29, 81),
+                origin: top-left,
+                font-size: 3.8%P,
+                color: "#1e293b"
             ){
-                styles:{
-                    "*" :{
-                        foreground-color:dark-gray
-                    }
-                }
                 body
             }
         }
+
         @define body3b{
             group(
-                  position : (33,22),
-                  size     : (32,72),
-                  origin : top-left,
-                  font-size:20,
-                  color: "#6b3a09",
-                  font-bold
+                position: (35, 13.5),
+                size: (29, 81),
+                origin: top-left,
+                font-size: 3.8%P,
+                color: "#1e293b"
             ){
-                styles:{
-                    "*" :{
-                        foreground-color:dark-gray
-                    }
-                }
                 body
             }
         }
+
         @define body3c{
-            group(position : (66,22),
-                  size     : (32,72),
-                  origin : top-left,
-                  font-size:20,
-                  color: "#6b3a09",
-                  font-bold
+            group(
+                position: (67, 13.5),
+                size: (29, 81),
+                origin: top-left,
+                font-size: 3.8%P,
+                color: "#1e293b"
             ){
-                styles:{
-                    "*" :{
-                        foreground-color:dark-gray
-                    }
-                }
                 body
             }
         }
-        header {
-            text("${title}"),
-        }
+
+        // Footer separator
         rectangle(
-            background: documentColors[4],
-            position:(0,95),
-            size:(100,5)
-            draw-contour:true,
+            position: (0, 96),
+            size: (100, 0.2),
+            background: "#e2e8f0"
         )
-        rectangle(
-            background: documentColors[3],
-            position:(0,95),
-            size:(100,0.3)
-            draw-contour:true,
+
+        // Footer left: Institution & Title
+        text(
+            either("${documentTitle}", "ENISo"),
+            position: (3, 98),
+            origin: left,
+            font-size: 2%P,
+            color: "#94a3b8"
         )
-        text("${documentAuthor}",font-size:2%P,position:bottom-right,origin:bottom-right,margin:(1,0,0,0.2))
+
+        // Footer right: Author
+        text(
+            either("${documentAuthor}", ""),
+            position: (97, 98),
+            origin: right,
+            font-size: 2%P,
+            color: "#94a3b8"
+        )
+
+        header()
         body
     }
 }

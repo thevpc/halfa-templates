@@ -1,175 +1,67 @@
 styles{
-    (*"){
-        font-size : 5%P
-        debug-color: red,
-        font-family : "Serif",
+    (*){
+        font-size: 4.5%P
+        font-family: "SansSerif",
+        color: "#1e293b"
     }
 
-    source {
-        font-size : 3%P,
-        font-family : "monospaced",
-        source-primary-color: documentColors
-        source-keyword-color: documentColors[1]
-        source-separator-color: documentColors[6]
-        source-string-color: documentColors[4]
-        source-comments-color: documentColors[12]
-        source-number-color: documentColors[3]
-        source-keyword-font-bold,
-        //draw-contour,
-
+    source{
+        font-size: 3.2%P,
+        font-family: "monospaced",
+        source-primary-color: "#f8fafc"
+        source-keyword-color: "#38bdf8"
+        source-separator-color: "#94a3b8"
+        source-string-color: "#4ade80"
+        source-comments-color: "#94a3b8"
+        source-number-color: "#fbbf24"
+        source-keyword-font-bold
+        background: "#0a192f"
+        color: "#f8fafc"
+        draw-contour: true
     }
 
     page{
-        background:Gray93
+        background: "#ffffff"
     }
 
     (.ul-item){
-        margin : (5,0)
-        at:left,
+        margin: (4, 0)
+        at: left,
     }
     (.ul-bullet){
         background: documentColors[1]
-        at:left,
-        size:3%P
+        at: left,
+        size: 2%P
     }
     (.ol-bullet){
-        color: documentColors[2]
-        at:center,
+        color: documentColors[0]
+        at: center,
+        font-bold
     }
     (.ol-item){
-        at:left,
+        at: left,
+        margin: (3, 0)
     }
     ellipse{
-        at:center,
+        at: center,
     }
     arc{
-        at:center,
+        at: center,
     }
 
     (.image-fig){
-        margin: 1
+        margin: 2
     }
     (.image-fig-legend){
-        at:bottom
-        font-size:2%P
-        margin:(1,1,1,2)
+        at: bottom
+        font-size: 2.5%P
+        color: "#64748b"
+        margin: (1, 1, 1, 2)
     }
     (.image-fig-title){
-        at:top
-        font-size:2%P
-        color:gray35
-    }
-}
-
-@define Palette{
-    group(size:100%P){
-       rectangle(
-           origin : top-left,
-           position : (0.5,1),
-           size : (1,2),
-           background: documentColors[1],
-           rotate:0
-           color:gray
-           draw-contour
-       )
-       rectangle(
-           origin : top-left,
-           position : (0.5,3),
-           size : (1,2),
-           background: documentColors[2],
-           color:gray
-           rotate:0
-           draw-contour
-       )
-       rectangle(
-           origin : top-left,
-           position : (0.5,5),
-           size : (1,2),
-           background: documentColors[3],
-           rotate:0
-           color:gray
-           draw-contour
-       )
-       rectangle(
-           origin : top-left,
-           position : (0.5,7),
-           size : (1,2),
-           background: documentColors[4],
-           rotate:0
-           color:gray
-           draw-contour
-       )
-       rectangle(
-           origin : top-left,
-           position : (0.5,9),
-           size : (1,2),
-           background: documentColors[5],
-           rotate:0
-           color:gray
-           draw-contour
-       )
-       rectangle(
-           origin : top-left,
-           position : (0.5,11),
-           size : (1,2),
-           background: documentColors[6],
-           rotate:0
-           color:gray
-           draw-contour
-       )
-       rectangle(
-           origin : top-left,
-           position : (1.5,1.5),
-           size : (1,2),
-           background: documentColors[7],
-           rotate:0
-           color:gray
-           draw-contour
-       )
-       rectangle(
-           origin : top-left,
-           position : (1.5,3.5),
-           size : (1,2),
-           background: documentColors[8],
-           rotate:0
-           color:gray
-           draw-contour
-       )
-       rectangle(
-           origin : top-left,
-           position : (1.5,5.5),
-           size : (1,2),
-           background: documentColors[9],
-           rotate:0
-           color:gray
-           draw-contour
-       )
-       rectangle(
-           origin : top-left,
-           position : (1.5,7.5),
-           size : (1,2),
-           background: documentColors[10],
-           rotate:0
-           color:gray
-           draw-contour
-       )
-       rectangle(
-           origin : top-left,
-           position : (1.5,9.5),
-           size : (1,2),
-           background: documentColors[11],
-           rotate:0
-           color:gray
-           draw-contour
-       )
-       rectangle(
-           origin : top-left,
-           position : (1.5,11.5),
-           size : (1,2),
-           background: documentColors[12],
-           rotate:0
-           color:gray
-           draw-contour
-       )
+        at: top
+        font-size: 3.5%P
+        font-bold,
+        color: documentColors[0]
     }
 }

@@ -1,46 +1,78 @@
-@define thankyou-slide(title:"",author:""){
+@define thankyou-slide(title:"", author:""){
     page{
+        rectangle(background: "#ffffff")
+
         styles{
-           (.title){
-               color: "#dddddd",
-               origin : center,
-               position : (50,30),
-               size : (100,30),
-               font-size: 15%P,
-               font-bold,
-               background: documentColors[1],
-           }
-           (.subtitle){
-               color: "#2c779a"
-               origin : center,
-               position : (50,50),
-               font-size: 10%P,
-               font-bold,
-           }
-           (.author){
-               color: "#112f3d",
-               origin : center,
-               position : (50,60),
-               font-size: 5%P,
-               font-bold,
-           }
-           (.date){
-               color: "#112f3d",
-               origin : center,
-               position : (50,65),
-               font-size: 10%P,
-               font-bold
-           }
-           (.version){
-               color: "#112f3d",
-               origin : center,
-               position : (50,69),
-               font-size: 10%P,
-               font-bold,
-           },
+            (.title){
+                color: "#003366",
+                origin: center,
+                position: (50, 42),
+                font-size: 8%P,
+                font-family: "SansSerif",
+                font-bold
+            }
+            (.subtitle){
+                color: "#0284c7",
+                origin: center,
+                position: (50, 54),
+                font-size: 4.2%P,
+                font-family: "SansSerif",
+                font-bold
+            }
+            (.author){
+                color: "#0f172a",
+                origin: center,
+                position: (50, 68),
+                font-size: 3.6%P,
+                font-family: "SansSerif",
+                font-bold
+            }
+            (.email){
+                color: "#0284c7",
+                origin: center,
+                position: (50, 75),
+                font-size: 3%P,
+                font-family: "SansSerif"
+            }
         }
-        @(title)    text(either("$title","Thank you")),
-        @(author)     text(either("${documentAuthor}","")),
+
+        // Top thin navy brand accent
+        rectangle(
+            position: (0, 0),
+            size: (100, 1.2),
+            background: "#003366"
+        )
+
+        // Institutional header
+        text("École Nationale d'Ingénieurs de Sousse · Université de Sousse",
+            position: (4, 7),
+            origin: left,
+            font-size: 2.8%P,
+            font-bold,
+            color: "#003366"
+        )
+
+        // ENISo Logo
+        image("images/eniso.png", origin: right, position: (96, 7), size: (8, 7), preserve-aspect-ratio)
+
+        // Header separator line
+        rectangle(
+            position: (0, 12),
+            size: (100, 0.2),
+            background: "#e2e8f0"
+        )
+
+        // Accent divider
+        rectangle(
+            position: (40, 61),
+            size: (20, 0.4),
+            background: "#0284c7"
+        )
+
+        @(title)    text(either("$title", "Merci pour votre attention"))
+        @(subtitle) text("Questions & Discussion")
+        @(author)   text(either("$author", either("${documentAuthor}", "")))
+        @(email)    text(either("${documentAuthorEmail}", ""))
         body
     }
 }

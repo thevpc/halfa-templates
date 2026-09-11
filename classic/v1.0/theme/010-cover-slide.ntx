@@ -1,96 +1,80 @@
 @define cover-slide(){
     page{
         styles{
-           (.title){
-               color: "#dddddd",
-               origin : center,
-               position : (50,25),
-               font-size:12%P,
-               font-family:Monospaced,
-               font-bold,
-               shadow:(color:gray,shift:(0.3,0.5))
-           }
-           (.subtitle){
-               color: documentColors[2]
-               origin : center,
-               position : (50,41),
-               font-size:7%P,
-               font-bold,
-               font-family:Serif,
-           }
-           (.subsubtitle){
-               color: documentColors[2]
-               origin : center,
-               position : (50,60),
-               font-size:5%P,
-               font-bold,
-               font-family:Serif,
-           }
-           (.author){
-               color: documentColors[1],
-               origin : center,
-               position : (50,68),
-               font-size:5%P,
-               font-bold,
-           }
-           (.email){
-               color: documentColors[1],
-               origin : center,
-               position : (50,76),
-               font-size:5%P,
-               font-bold,
-           }
-           (.affiliation){
-               color: documentColors[1],
-               origin : center,
-               position : (50,82),
-               font-size:5%P,
-               font-bold,
-           }
-           (.date){
-               color: documentColors[1],
-               origin : center,
-               position : (50,88),
-               font-size:5%P,
-               font-bold,
-           }
-           (.version){
-               color: documentColors[1],
-               origin : center,
-               position : (50,96),
-               font-size:5%P,
-               font-bold,
-           },
+            (.title){
+                color: "#0f172a",
+                origin: center,
+                position: (50, 32),
+                font-size: 8%P,
+                font-family: "SansSerif",
+                font-bold
+            }
+            (.subtitle){
+                color: documentColors[1],
+                origin: center,
+                position: (50, 44),
+                font-size: 4.5%P,
+                font-family: "SansSerif",
+                font-bold
+            }
+            (.subsubtitle){
+                color: "#64748b",
+                origin: center,
+                position: (50, 53),
+                font-size: 3.5%P,
+                font-family: "SansSerif"
+            }
+            (.author){
+                color: "#0f172a",
+                origin: center,
+                position: (50, 72),
+                font-size: 3.8%P,
+                font-bold
+            }
+            (.affiliation){
+                color: "#475569",
+                origin: center,
+                position: (50, 78),
+                font-size: 3.2%P
+            }
+            (.email){
+                color: documentColors[1],
+                origin: center,
+                position: (50, 84),
+                font-size: 3%P
+            }
+            (.date){
+                color: "#94a3b8",
+                origin: center,
+                position: (50, 92),
+                font-size: 2.8%P
+            }
         }
-       rectangle(
-           background: white,
-       )
-       rectangle(
-           origin : center,
-           position : (50,32),
-           size : (150,40),
-           background: rotateSinebowColor(documentColors[1],10),
-           rotate:-5
-           draw-contour
-           stroke:{width:5}
-       )
-       rectangle(
-           origin : center,
-           position : (50,30),
-           size : (150,40),
-           background: documentColors[1],
-           rotate:-5
-           draw-contour
-           stroke:{width:5}
-       )
+
+        // Clean white background
+        rectangle(background: "#ffffff")
+
+        // Top accent line
+        rectangle(
+            position: (0, 0),
+            size: (100, 1.2),
+            background: documentColors[1]
+        )
+
+        // Middle accent divider
+        rectangle(
+            position: (35, 62),
+            size: (30, 0.4),
+            background: documentColors[1]
+        )
+
         @(title)       text("${documentTitle}")
-        @(subtitle)    text(value: either("${documentSubtitle}",""))
-        @(subsubtitle) text(either("${documentSubsubtitle}",""))
-        @(author)      text(either("${documentAuthor}",""))
-        @(email)       text(either("${documentAuthorEmail}",""))
-        @(affiliation) text(either("${documentAuthorAffiliation}",""))
-        @(date)        text(either("${documentDate}",""))
-        @(version)     text(either("${documentVersion}",""))
-       body
+        @(subtitle)    text(value: either("${documentSubtitle}", ""))
+        @(subsubtitle) text(either("${documentSubsubtitle}", ""))
+        @(author)      text(either("${documentAuthor}", ""))
+        @(affiliation) text(either("${documentAuthorAffiliation}", ""))
+        @(email)       text(either("${documentAuthorEmail}", ""))
+        @(date)        text(either("${documentDate}", ""))
+        body
     }
 }
