@@ -2,7 +2,7 @@ styles{
     (*){
         font-size : 4.5%P
         font-family : "SansSerif",
-        color: "#1e293b"
+        color: "#111827"
     }
 
     source{
@@ -18,6 +18,7 @@ styles{
         background: "#0f172a"
         color: "#f8fafc"
         draw-contour: true
+        padding: (1%P, 0.5%P)
     }
 
     page{
