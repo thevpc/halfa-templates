@@ -1,5 +1,5 @@
-@define image-fig(src, title, legend){
-    @(img) group{
+@define image-fig(src, title:"", legend:"", at:center, size:30){
+    @(img) group(at: at, size: size){
         rectangle(color: "#cbd5e1", stroke: dashed, size: 98, round-corner: 4)
         @(image-fig) image(src, size: (95, 85), at: center, preserve-aspect-ratio)
         @(image-fig-title) text("$title")
