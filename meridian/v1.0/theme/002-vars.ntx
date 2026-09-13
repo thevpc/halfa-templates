@@ -1,0 +1,47 @@
+documentTitle:="My Document"
+documentSubtitle:=""
+documentSubsubtitle:=""
+documentAuthor:="Author"
+documentAuthorEmail:="author@example.com"
+documentAuthorAffiliation:=""
+documentChapter:=""
+documentDate:=""
+documentVersion:="1.0"
+
+themeShowPalette:=false
+documentColorAccent:=0
+// Meridian — a refined noir palette with luminous accents
+documentColors:=arrayLeftRotate([
+    "#e5c158", // 0: Radiant champagne gold — primary accent
+    "#60a5fa", // 1: Luminous azure blue
+    "#34d399", // 2: Emerald mint green
+    "#fbbf24", // 3: Warm amber gold
+    "#f87171", // 4: Coral rose red
+    "#a78bfa", // 5: Soft violet purple
+    "#38bdf8", // 6: Cyan ice blue
+    "#fb923c", // 7: Vibrant orange
+    "#e879f9", // 8: Orchid pink
+    "#4ade80", // 9: Bright spring lime
+    "#94a3b8", // 10: Slate silver
+    "#fef08a"  // 11: Light canary highlight
+], either(documentColorAccent, 0))
+
+// Core neutrals — the Meridian noir surface system (kept outside the rotating accent array
+// so the look stays stable even if documentColorAccent is changed)
+documentBg:="#0d0f13"            // page background — near-black charcoal
+documentSurface:="#161920"       // raised panel / card surface
+documentSurfaceAlt:="#1d212a"    // secondary panel surface
+documentLine:="#2a2e38"          // hairline dividers / borders
+documentTextPrimary:="#f2f0ea"   // primary text — warm ivory
+documentTextSecondary:="#a7abb8" // secondary text — cool grey
+documentTextMuted:="#666b78"     // muted / tertiary text
+
+// Fixed semantic colors for callouts (independent from the rotating accent)
+semanticInfoColor:="#6b8caf"
+semanticInfoBg:="#131922"
+semanticWarningColor:="#c9974a"
+semanticWarningBg:="#1c160e"
+semanticErrorColor:="#b5654f"
+semanticErrorBg:="#1e1310"
+semanticSuccessColor:="#7c9885"
+semanticSuccessBg:="#121a15"

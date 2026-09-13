@@ -1,0 +1,142 @@
+@define content-slide(title){
+    page{
+        rectangle(background: documentBg)
+
+        @define header{
+            group(
+                position: (0, 0),
+                size: (100, 16),
+                origin: top-left
+            ){
+                // Accent tick + chapter kicker
+                rectangle(position: (3, 30), size: (2.2, 2.5), background: documentColors[0])
+                text(
+                    either("${documentChapter}", "${documentTitle}"),
+                    position: (6.5, 32),
+                    origin: left,
+                    font-size: 2.6%P,
+                    font-bold,
+                    color: documentColors[0]
+                )
+
+                // Slide title
+                text(
+                    "${title}",
+                    position: (3, 62),
+                    origin: left,
+                    font-size: 5%P,
+                    font-bold,
+                    color: documentTextPrimary
+                )
+
+                // header hairline
+                rectangle(
+                    position: (0, 98),
+                    size: (100, 0.15),
+                    background: documentLine
+                )
+
+                body
+            }
+        }
+
+        @define footer{
+            group(
+                position: (0, 96),
+                size: (100, 4),
+                origin: top-left
+            ){
+                text(
+                    "${documentTitle}",
+                    position: (3, 50),
+                    origin: left,
+                    font-size: 2.2%P,
+                    color: documentTextMuted
+                )
+                text(
+                    either("${documentDate}", ""),
+                    position: (97, 50),
+                    origin: right,
+                    font-size: 2.2%P,
+                    color: documentTextMuted
+                )
+            }
+        }
+
+        @define body{
+            group(
+                position: (3, 20),
+                size: (94, 74),
+                origin: top-left,
+                font-size: 4.2%P,
+                color: documentTextPrimary
+            ){
+                body
+            }
+        }
+
+        @define body2a{
+            group(
+                position: (3, 20),
+                size: (45, 74),
+                origin: top-left,
+                font-size: 4.2%P,
+                color: documentTextPrimary
+            ){
+                body
+            }
+        }
+
+        @define body2b{
+            group(
+                position: (52, 20),
+                size: (45, 74),
+                origin: top-left,
+                font-size: 4.2%P,
+                color: documentTextPrimary
+            ){
+                body
+            }
+        }
+
+        @define body3a{
+            group(
+                position: (3, 20),
+                size: (29, 74),
+                origin: top-left,
+                font-size: 3.8%P,
+                color: documentTextPrimary
+            ){
+                body
+            }
+        }
+
+        @define body3b{
+            group(
+                position: (35, 20),
+                size: (29, 74),
+                origin: top-left,
+                font-size: 3.8%P,
+                color: documentTextPrimary
+            ){
+                body
+            }
+        }
+
+        @define body3c{
+            group(
+                position: (67, 20),
+                size: (29, 74),
+                origin: top-left,
+                font-size: 3.8%P,
+                color: documentTextPrimary
+            ){
+                body
+            }
+        }
+
+        header()
+        body
+        footer()
+    }
+}

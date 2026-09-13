@@ -1,0 +1,5 @@
+@define conclusion-slide(title){
+    content-slide(title: either("${title}", "Conclusion")){
+        body
+    }
+}

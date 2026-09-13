@@ -25,3 +25,22 @@ documentColors:=arrayLeftRotate([
     "#ea580c", // 10: Burnt orange accent
     "#1e293b"  // 11: Dark slate accent
 ], either(documentColorAccent, 0))
+
+// Neutral surface & text variables (harmonized with meridian)
+documentBg:="#ffffff"            // page background — pure white
+documentSurface:="#f8fafc"       // raised panel / card surface
+documentSurfaceAlt:="#f1f5f9"    // secondary panel surface
+documentLine:="#e2e8f0"          // hairline dividers / borders
+documentTextPrimary:="#0f172a"   // primary text — dark slate
+documentTextSecondary:="#475569" // secondary text — muted slate
+documentTextMuted:="#94a3b8"     // muted / tertiary text
+
+// Semantic colors
+semanticInfoColor:="#0284c7"
+semanticInfoBg:="#f0f9ff"
+semanticWarningColor:="#d97706"
+semanticWarningBg:="#fffbeb"
+semanticErrorColor:="#dc2626"
+semanticErrorBg:="#fef2f2"
+semanticSuccessColor:="#16a34a"
+semanticSuccessBg:="#f0fdf4"

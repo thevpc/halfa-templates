@@ -1,0 +1,91 @@
+@define cover-slide(){
+    page{
+        styles{
+            (.kicker){
+                color: documentColors[0],
+                origin: left,
+                position: (8, 18),
+                font-size: 2.8%P,
+                font-family: "SansSerif",
+                font-bold
+            }
+            (.title){
+                color: documentTextPrimary,
+                origin: left,
+                position: (8, 32),
+                font-size: 7.5%P,
+                font-family: "SansSerif",
+                font-bold
+            }
+            (.subtitle){
+                color: documentColors[0],
+                origin: left,
+                position: (8, 44),
+                font-size: 3.8%P,
+                font-family: "SansSerif",
+                font-bold
+            }
+            (.subsubtitle){
+                color: documentTextSecondary,
+                origin: left,
+                position: (8, 50),
+                font-size: 3%P,
+                font-family: "SansSerif"
+            }
+            (.author){
+                color: documentTextPrimary,
+                origin: left,
+                position: (8, 84),
+                font-size: 3.4%P,
+                font-bold
+            }
+            (.affiliation){
+                color: documentTextSecondary,
+                origin: left,
+                position: (8, 88.5),
+                font-size: 2.8%P
+            }
+            (.email){
+                color: documentColors[0],
+                origin: left,
+                position: (8, 92.5),
+                font-size: 2.6%P
+            }
+            (.date){
+                color: documentTextMuted,
+                origin: right,
+                position: (92, 8),
+                font-size: 2.4%P
+            }
+            (.version){
+                color: documentTextMuted,
+                origin: right,
+                position: (92, 92.5),
+                font-size: 2.2%P
+            }
+        }
+
+        // Noir background
+        rectangle(background: documentBg)
+
+        // Editorial corner marks (top-left, bottom-right)
+        rectangle(position: (6, 6), size: (5, 0.2), background: documentColors[0])
+        rectangle(position: (6, 6), size: (0.2, 5), background: documentColors[0])
+        rectangle(position: (89, 94), size: (5, 0.2), background: documentColors[0])
+        rectangle(position: (94, 89), size: (0.2, 5), background: documentColors[0])
+
+        // Accent rule under subtitle block
+        rectangle(position: (8, 58), size: (12, 0.3), background: documentColors[0])
+
+        @(kicker)      text(either("${documentChapter}", "Presentation"))
+        @(title)       text("${documentTitle}")
+        @(subtitle)    text(either("${documentSubtitle}", ""))
+        @(subsubtitle) text(either("${documentSubsubtitle}", ""))
+        @(author)      text(either("${documentAuthor}", ""))
+        @(affiliation) text(either("${documentAuthorAffiliation}", ""))
+        @(email)       text(either("${documentAuthorEmail}", ""))
+        @(date)        text(either("${documentDate}", ""))
+        @(version)     text(either("v${documentVersion}", ""))
+        body
+    }
+}
