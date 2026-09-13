@@ -85,7 +85,7 @@
         @(affiliation) text(either("${documentAuthorAffiliation}", ""))
         @(email)       text(either("${documentAuthorEmail}", ""))
         @(date)        text(either("${documentDate}", ""))
-        @(version)     text(either("v${documentVersion}", ""))
+        @(version)     text(either("${documentVersion}", ""))
         body
     }
 }
