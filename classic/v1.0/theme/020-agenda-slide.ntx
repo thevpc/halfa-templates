@@ -1,5 +1,23 @@
 @define agenda-slide(title){
-    content-slide(title: either("$title", "Agenda")){
+    content-slide(title: either("${title}", "Agenda")){
+        styles{
+            (.ul-item){
+                margin: (2.8, 0)
+                font-size: 3.4%P
+                text-wrap: wrap
+            }
+            (.ol-item){
+                margin: (2.8, 0)
+                font-size: 3.4%P
+                text-wrap: wrap
+            }
+            (.ul-bullet){
+                size: 1.8%P
+            }
+            (.ol-bullet){
+                font-size: 3.4%P
+            }
+        }
         body
     }
 }

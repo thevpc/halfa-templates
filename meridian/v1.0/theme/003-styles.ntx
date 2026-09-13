@@ -6,7 +6,7 @@ styles{
     }
 
     source{
-        font-size : 3.2%P,
+        font-size : 1.85%P,
         font-family : "monospaced",
         source-primary-color: documentTextPrimary
         source-keyword-color: documentColors[0]
@@ -18,16 +18,22 @@ styles{
         background: "#0a0c10"
         color: documentTextPrimary
         draw-contour: true
-        padding: (1%P, 0.5%P)
+        padding: (0.8%P, 0.4%P)
     }
 
     page{
         background: documentBg
     }
 
+    text{
+        text-wrap: wrap
+    }
+
     (.ul-item){
-        margin : (4, 0)
+        margin : (1.8, 0)
         at: left,
+        font-size: 3.2%P
+        text-wrap: wrap
     }
     (.ul-bullet){
         background: documentColors[0]
@@ -41,7 +47,18 @@ styles{
     }
     (.ol-item){
         at: left,
-        margin: (3, 0)
+        margin: (1.8, 0)
+        font-size: 3.2%P
+        text-wrap: wrap
+    }
+    (.compact){
+        font-size: 2.3%P
+    }
+    (.compact-list){
+        font-size: 2.3%P
+    }
+    (.large){
+        font-size: 3.4%P
     }
     ellipse{
         at: center,

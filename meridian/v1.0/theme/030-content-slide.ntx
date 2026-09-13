@@ -68,7 +68,7 @@
                 position: (3, 20),
                 size: (94, 74),
                 origin: top-left,
-                font-size: 4.2%P,
+                font-size: 3.2%P,
                 color: documentTextPrimary
             ){
                 body
@@ -76,61 +76,136 @@
         }
 
         @define body2a{
-            group(
+            col(
                 position: (3, 20),
                 size: (45, 74),
                 origin: top-left,
-                font-size: 4.2%P,
+                font-size: 2.8%P,
                 color: documentTextPrimary
             ){
+                styles{
+                    (.ul-item){
+                        font-size: 2.6%P
+                        margin: (1.4, 0)
+                        text-wrap: wrap
+                    }
+                    (.ol-item){
+                        font-size: 2.6%P
+                        margin: (1.4, 0)
+                        text-wrap: wrap
+                    }
+                    (.ul-bullet){
+                        size: 1.4%P
+                    }
+                }
                 body
             }
         }
 
         @define body2b{
-            group(
+            col(
                 position: (52, 20),
                 size: (45, 74),
                 origin: top-left,
-                font-size: 4.2%P,
+                font-size: 2.8%P,
                 color: documentTextPrimary
             ){
+                styles{
+                    (.ul-item){
+                        font-size: 2.6%P
+                        margin: (1.4, 0)
+                        text-wrap: wrap
+                    }
+                    (.ol-item){
+                        font-size: 2.6%P
+                        margin: (1.4, 0)
+                        text-wrap: wrap
+                    }
+                    (.ul-bullet){
+                        size: 1.4%P
+                    }
+                }
                 body
             }
         }
 
         @define body3a{
-            group(
+            col(
                 position: (3, 20),
                 size: (29, 74),
                 origin: top-left,
-                font-size: 3.8%P,
+                font-size: 2.4%P,
                 color: documentTextPrimary
             ){
+                styles{
+                    (.ul-item){
+                        font-size: 2.2%P
+                        margin: (1.2, 0)
+                        text-wrap: wrap
+                    }
+                    (.ol-item){
+                        font-size: 2.2%P
+                        margin: (1.2, 0)
+                        text-wrap: wrap
+                    }
+                    (.ul-bullet){
+                        size: 1.2%P
+                    }
+                }
                 body
             }
         }
 
         @define body3b{
-            group(
+            col(
                 position: (35, 20),
                 size: (29, 74),
                 origin: top-left,
-                font-size: 3.8%P,
+                font-size: 2.4%P,
                 color: documentTextPrimary
             ){
+                styles{
+                    (.ul-item){
+                        font-size: 2.2%P
+                        margin: (1.2, 0)
+                        text-wrap: wrap
+                    }
+                    (.ol-item){
+                        font-size: 2.2%P
+                        margin: (1.2, 0)
+                        text-wrap: wrap
+                    }
+                    (.ul-bullet){
+                        size: 1.2%P
+                    }
+                }
                 body
             }
         }
 
         @define body3c{
-            group(
+            col(
                 position: (67, 20),
                 size: (29, 74),
                 origin: top-left,
-                font-size: 3.8%P,
+                font-size: 2.4%P,
                 color: documentTextPrimary
             ){
+                styles{
+                    (.ul-item){
+                        font-size: 2.2%P
+                        margin: (1.2, 0)
+                        text-wrap: wrap
+                    }
+                    (.ol-item){
+                        font-size: 2.2%P
+                        margin: (1.2, 0)
+                        text-wrap: wrap
+                    }
+                    (.ul-bullet){
+                        size: 1.2%P
+                    }
+                }
                 body
             }
         }

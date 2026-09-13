@@ -25,14 +25,20 @@ styles{
         background: "#ffffff"
     }
 
+    text{
+        text-wrap: wrap
+    }
+
     (.ul-item){
-        margin : (4, 0)
+        margin : (1.8, 0)
         at: left,
+        font-size: 3.2%P
+        text-wrap: wrap
     }
     (.ul-bullet){
         background: documentColors[1]
         at: left,
-        size: 2%P
+        size: 1.6%P
     }
     (.ol-bullet){
         color: documentColors[1]
@@ -41,7 +47,18 @@ styles{
     }
     (.ol-item){
         at: left,
-        margin: (3, 0)
+        margin: (1.8, 0)
+        font-size: 3.2%P
+        text-wrap: wrap
+    }
+    (.compact){
+        font-size: 2.3%P
+    }
+    (.compact-list){
+        font-size: 2.3%P
+    }
+    (.large){
+        font-size: 3.4%P
     }
     ellipse{
         at: center,
