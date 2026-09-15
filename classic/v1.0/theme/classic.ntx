@@ -1,0 +1,699 @@
+////////////////////
+// classic theme (single file to simplify AI edition)
+////////////////////
+
+import(
+    "common-functions"
+    "plantuml"
+    "animated-gif"
+    "svg"
+    "shapes2d"
+    "shapes3d"
+    "plot2d"
+    "presenters"
+    "latex"
+)
+
+
+////////////////////
+// VARS
+////////////////////
+
+ documentTitle:="My Document"
+ documentSubtitle:=""
+ documentSubsubtitle:=""
+ documentAuthor:="Author"
+ documentAuthorEmail:="author@example.com"
+ documentAuthorAffiliation:=""
+ documentChapter:=""
+ documentDate:=""
+ documentVersion:="1.0"
+
+ themeShowPalette:=false
+ documentColorAccent:=0
+ // Modern harmonious presentation palette (Slate, Sapphire, Indigo, Sky, Emerald, Amber, Crimson)
+ documentColors:=arrayLeftRotate([
+     "#2563eb", // 0: Sapphire blue primary accent
+     "#7c3aed", // 1: Violet accent
+     "#059669", // 2: Emerald green accent
+     "#d97706", // 3: Amber accent
+     "#dc2626", // 4: Crimson red accent
+     "#0284c7", // 5: Ocean sky blue accent
+     "#4f46e5", // 6: Royal indigo accent
+     "#0d9488", // 7: Deep teal accent
+     "#9333ea", // 8: Purple accent
+     "#c026d3", // 9: Fuchsia magenta accent
+     "#ea580c", // 10: Burnt orange accent
+     "#1e293b"  // 11: Dark slate accent
+ ], either(documentColorAccent, 0))
+
+ // Neutral surface & text variables (harmonized with meridian)
+ documentBg:="#ffffff"            // page background — pure white
+ documentSurface:="#f8fafc"       // raised panel / card surface
+ documentSurfaceAlt:="#f1f5f9"    // secondary panel surface
+ documentLine:="#e2e8f0"          // hairline dividers / borders
+ documentTextPrimary:="#0f172a"   // primary text — dark slate
+ documentTextSecondary:="#475569" // secondary text — muted slate
+ documentTextMuted:="#94a3b8"     // muted / tertiary text
+
+ // Semantic colors
+ semanticInfoColor:="#0284c7"
+ semanticInfoBg:="#f0f9ff"
+ semanticWarningColor:="#d97706"
+ semanticWarningBg:="#fffbeb"
+ semanticErrorColor:="#dc2626"
+ semanticErrorBg:="#fef2f2"
+ semanticSuccessColor:="#16a34a"
+ semanticSuccessBg:="#f0fdf4"
+
+////////////////////
+// STYLES
+////////////////////
+
+styles{
+    (*){
+        font-size : 4.5%P
+        font-family : "SansSerif",
+        color: "#111827"
+    }
+
+    source{
+        font-size : 3.2%P,
+        font-family : "monospaced",
+        source-primary-color: "#f8fafc"
+        source-keyword-color: "#38bdf8"
+        source-separator-color: "#94a3b8"
+        source-string-color: "#a3e635"
+        source-comments-color: "#64748b"
+        source-number-color: "#f59e0b"
+        source-keyword-font-bold
+        background: "#0f172a"
+        color: "#f8fafc"
+        draw-contour: true
+        padding: (1%P, 0.5%P)
+    }
+
+    page{
+        background: "#ffffff"
+    }
+
+    text{
+        text-wrap: wrap
+    }
+
+    (.ul-item){
+        margin : (1.8, 0)
+        at: left,
+        font-size: 3.2%P
+        text-wrap: wrap
+    }
+    (.ul-bullet){
+        background: documentColors[1]
+        at: left,
+        size: 1.6%P
+    }
+    (.ol-bullet){
+        color: documentColors[1]
+        at: center,
+        font-bold
+    }
+    (.ol-item){
+        at: left,
+        margin: (1.8, 0)
+        font-size: 3.2%P
+        text-wrap: wrap
+    }
+    (.compact){
+        font-size: 2.3%P
+    }
+    (.compact-list){
+        font-size: 2.3%P
+    }
+    (.large){
+        font-size: 3.4%P
+    }
+    ellipse{
+        at: center,
+    }
+    arc{
+        at: center,
+    }
+
+    (.image-fig){
+        margin: 2
+    }
+    (.image-fig-legend){
+        at: bottom
+        font-size: 2.5%P
+        color: "#64748b"
+    }
+    (.image-fig-title){
+        at: top
+        font-size: 3.5%P
+        font-bold,
+        color: documentColors[1]
+    }
+}
+
+////////////////////
+// COMPONENTS
+////////////////////
+
+@define image-fig(src, title:"", legend:"", at:center, size:30){
+    @(img) group(at: at, size: size){
+        rectangle(color: "#cbd5e1", stroke: dashed, size: 98, round-corner: 4)
+        @(image-fig) image(src, size: (95, 85), at: center, preserve-aspect-ratio)
+        @(image-fig-title) text("${title}")
+        @(image-fig-legend) text("${legend}")
+    }
+}
+
+@define card(accentColor: ""){
+    group(margin: 1, row-weight: 70){
+        rectangle(background: documentSurface, color: documentLine, draw-contour: true, round-corner: 4)
+        rectangle(background: either(accentColor, documentColors[0]), position: (0, 6), size: (0.35%P, 88))
+        @define kicker(text, color: ""){
+            group(position: (4, 3), size: (92, 8), origin: top-left){
+                rectangle(position: (0, 50), size: (1.2%P, 0.35%P), origin: left, background: either(color, either(accentColor, documentColors[0])))
+                text("${text}", position: (1.8%P, 50), origin: left, font-size: 2.2%P, font-bold, color: either(color, either(accentColor, documentColors[0])))
+            }
+        }
+        styles{
+            unordered-list{
+                position: (4, 12)
+                size: (92, 86)
+                origin: top-left
+            }
+            ul{
+                position: (4, 12)
+                size: (92, 86)
+                origin: top-left
+            }
+            ordered-list{
+                position: (4, 12)
+                size: (92, 86)
+                origin: top-left
+            }
+            ol{
+                position: (4, 12)
+                size: (92, 86)
+                origin: top-left
+            }
+            column{
+                position: (4, 12)
+                size: (92, 86)
+                origin: top-left
+            }
+            col{
+                position: (4, 12)
+                size: (92, 86)
+                origin: top-left
+            }
+            source{
+                position: (4, 12)
+                size: (92, 86)
+                origin: top-left
+                font-size: 1.85%P
+            }
+            (.ul-item){
+                font-size: 2.3%P
+                margin: (1.2, 0)
+                text-wrap: wrap
+            }
+            (.ol-item){
+                font-size: 2.3%P
+                margin: (1.2, 0)
+                text-wrap: wrap
+            }
+            (.ul-bullet){
+                size: 1.3%P
+            }
+        }
+        body
+    }
+}
+
+@define kicker(text, color: ""){
+    group(size: (100, 6)){
+        rectangle(position: (0, 50), size: (1.2%P, 0.35%P), origin: left, background: either(color, documentColors[0]))
+        text("${text}", position: (1.8%P, 50), origin: left, font-size: 2.2%P, font-bold, color: either(color, documentColors[0]))
+    }
+}
+
+@define divider(width: 40, thickness: 0.3){
+    rectangle(size: (width, thickness), background: documentColors[0])
+}
+
+@define stat(value, label){
+    group(margin: 1){
+        text("${value}", position: (50, 38), origin: center, font-size: 7.5%P, font-bold, color: documentColors[0])
+        text("${label}", position: (50, 68), origin: center, font-size: 2.8%P, color: documentTextSecondary)
+    }
+}
+
+@define quote(author: ""){
+    group(margin: 3){
+        rectangle(background: documentColors[0], position: (0, 4), size: (0.35%P, 92))
+        group(position: (5, 4), size: (93, 92)){
+            body
+            text(either("${author}", ""), position: (0, 92), font-size: 3%P, color: documentTextSecondary, font-bold)
+        }
+    }
+}
+
+@define panel(background: ""){
+    group(margin: 2){
+        rectangle(
+            background: either(background, "#f8fafc"),
+            color: documentLine,
+            draw-contour: true,
+            round-corner: 6,
+            shadow: {distance: (0, 2), radius: 6, color: "#cbd5e1"}
+        )
+        group(position: (3, 3), size: (94, 94)){
+            body
+        }
+    }
+}
+
+@define callout(title, accentColor, bgColor){
+    group(margin: 1, row-weight: 30){
+        rectangle(background: bgColor, color: documentLine, draw-contour: true, round-corner: 4)
+        rectangle(background: accentColor, position: (0, 0), size: (1.5, 100))
+        group(position: (4, 4), size: (92, 92), origin: top-left){
+            text(either("${title}", ""), position: (0, 0), origin: top-left, font-bold, color: accentColor, font-size: 2.2%P)
+            group(position: (0, 30), size: (100, 68), origin: top-left){
+                styles{
+                    (*){
+                        font-size: 2.0%P
+                    }
+                }
+                body
+            }
+        }
+    }
+}
+
+@define hint-info(title){
+    callout(title: either("${title}", "Information"), accentColor: semanticInfoColor, bgColor: semanticInfoBg){
+        body
+    }
+}
+
+@define hint-warning(title){
+    callout(title: either("${title}", "Warning"), accentColor: semanticWarningColor, bgColor: semanticWarningBg){
+        body
+    }
+}
+
+@define hint-error(title){
+    callout(title: either("${title}", "Important"), accentColor: semanticErrorColor, bgColor: semanticErrorBg){
+        body
+    }
+}
+
+@define hint-success(title){
+    callout(title: either("${title}", "Note"), accentColor: semanticSuccessColor, bgColor: semanticSuccessBg){
+        body
+    }
+}
+
+////////////////////
+// COVER SLIDE
+////////////////////
+
+@define cover-slide(){
+    page{
+        styles{
+            (.title){
+                color: "#0f172a",
+                origin: center,
+                position: (50, 32),
+                font-size: 8%P,
+                font-family: "SansSerif",
+                font-bold
+            }
+            (.subtitle){
+                color: documentColors[1],
+                origin: center,
+                position: (50, 44),
+                font-size: 4.5%P,
+                font-family: "SansSerif",
+                font-bold
+            }
+            (.subsubtitle){
+                color: "#64748b",
+                origin: center,
+                position: (50, 53),
+                font-size: 3.5%P,
+                font-family: "SansSerif"
+            }
+            (.author){
+                color: "#0f172a",
+                origin: center,
+                position: (50, 72),
+                font-size: 3.8%P,
+                font-bold
+            }
+            (.affiliation){
+                color: "#475569",
+                origin: center,
+                position: (50, 78),
+                font-size: 3.2%P
+            }
+            (.email){
+                color: documentColors[1],
+                origin: center,
+                position: (50, 84),
+                font-size: 3%P
+            }
+            (.date){
+                color: "#94a3b8",
+                origin: center,
+                position: (50, 92),
+                font-size: 2.8%P
+            }
+        }
+
+        // Clean white background
+        rectangle(background: "#ffffff")
+
+        // Top accent line
+        rectangle(
+            position: (0, 0),
+            size: (100, 1.2),
+            background: documentColors[1]
+        )
+
+        // Middle accent divider
+        rectangle(
+            position: (35, 62),
+            size: (30, 0.4),
+            background: documentColors[1]
+        )
+
+        @(title)       text("${documentTitle}")
+        @(subtitle)    text(value: either("${documentSubtitle}", ""))
+        @(subsubtitle) text(either("${documentSubsubtitle}", ""))
+        @(author)      text(either("${documentAuthor}", ""))
+        @(affiliation) text(either("${documentAuthorAffiliation}", ""))
+        @(email)       text(either("${documentAuthorEmail}", ""))
+        @(date)        text(either("${documentDate}", ""))
+        body
+    }
+}
+
+////////////////////
+// AGENDA SLIDE
+////////////////////
+
+@define agenda-slide(title){
+    content-slide(title: either("${title}", "Agenda")){
+        styles{
+            (.ul-item){
+                margin: (2.8, 0)
+                font-size: 3.4%P
+                text-wrap: wrap
+            }
+            (.ol-item){
+                margin: (2.8, 0)
+                font-size: 3.4%P
+                text-wrap: wrap
+            }
+            (.ul-bullet){
+                size: 1.8%P
+            }
+            (.ol-bullet){
+                font-size: 3.4%P
+            }
+        }
+        body
+    }
+}
+
+////////////////////
+// CONTENT SLIDE
+////////////////////
+
+@define content-slide(title){
+    page{
+        rectangle(background: "#ffffff")
+
+        @define header{
+            group(
+                position: (0, 0),
+                size: (100, 11),
+                origin: top-left
+            ){
+                // Header accent bar
+                rectangle(
+                    position: (0, 98),
+                    size: (100, 2),
+                    background: "#e2e8f0"
+                )
+                rectangle(
+                    position: (0, 96),
+                    size: (12, 4),
+                    background: documentColors[1]
+                )
+
+                // Slide Title
+                text(
+                    "${title}",
+                    position: (3, 55),
+                    origin: left,
+                    font-size: 4.8%P,
+                    font-bold,
+                    color: "#0f172a"
+                )
+
+                // Chapter breadcrumb (right)
+                text(
+                    either("${documentChapter}", "${documentTitle}"),
+                    position: (97, 55),
+                    origin: right,
+                    font-size: 2.8%P,
+                    color: "#64748b"
+                )
+
+                body
+            }
+        }
+
+        @define body{
+            group(
+                position: (3, 14),
+                size: (94, 82),
+                origin: top-left,
+                font-size: 3.4%P,
+                color: "#1e293b"
+            ){
+                body
+            }
+        }
+
+        @define body2a{
+            col(
+                position: (3, 14),
+                size: (45, 82),
+                origin: top-left,
+                font-size: 2.8%P,
+                color: "#1e293b"
+            ){
+                styles{
+                    (.ul-item){
+                        font-size: 2.6%P
+                        margin: (1.4, 0)
+                        text-wrap: wrap
+                    }
+                    (.ol-item){
+                        font-size: 2.6%P
+                        margin: (1.4, 0)
+                        text-wrap: wrap
+                    }
+                    (.ul-bullet){
+                        size: 1.4%P
+                    }
+                }
+                body
+            }
+        }
+
+        @define body2b{
+            col(
+                position: (52, 14),
+                size: (45, 82),
+                origin: top-left,
+                font-size: 2.8%P,
+                color: "#1e293b"
+            ){
+                styles{
+                    (.ul-item){
+                        font-size: 2.6%P
+                        margin: (1.4, 0)
+                        text-wrap: wrap
+                    }
+                    (.ol-item){
+                        font-size: 2.6%P
+                        margin: (1.4, 0)
+                        text-wrap: wrap
+                    }
+                    (.ul-bullet){
+                        size: 1.4%P
+                    }
+                }
+                body
+            }
+        }
+
+        @define body3a{
+            col(
+                position: (3, 14),
+                size: (29, 82),
+                origin: top-left,
+                font-size: 2.4%P,
+                color: "#1e293b"
+            ){
+                styles{
+                    (.ul-item){
+                        font-size: 2.2%P
+                        margin: (1.2, 0)
+                        text-wrap: wrap
+                    }
+                    (.ol-item){
+                        font-size: 2.2%P
+                        margin: (1.2, 0)
+                        text-wrap: wrap
+                    }
+                    (.ul-bullet){
+                        size: 1.2%P
+                    }
+                }
+                body
+            }
+        }
+
+        @define body3b{
+            col(
+                position: (35, 14),
+                size: (29, 82),
+                origin: top-left,
+                font-size: 2.4%P,
+                color: "#1e293b"
+            ){
+                styles{
+                    (.ul-item){
+                        font-size: 2.2%P
+                        margin: (1.2, 0)
+                        text-wrap: wrap
+                    }
+                    (.ol-item){
+                        font-size: 2.2%P
+                        margin: (1.2, 0)
+                        text-wrap: wrap
+                    }
+                    (.ul-bullet){
+                        size: 1.2%P
+                    }
+                }
+                body
+            }
+        }
+
+        @define body3c{
+            col(
+                position: (67, 14),
+                size: (29, 82),
+                origin: top-left,
+                font-size: 2.4%P,
+                color: "#1e293b"
+            ){
+                styles{
+                    (.ul-item){
+                        font-size: 2.2%P
+                        margin: (1.2, 0)
+                        text-wrap: wrap
+                    }
+                    (.ol-item){
+                        font-size: 2.2%P
+                        margin: (1.2, 0)
+                        text-wrap: wrap
+                    }
+                    (.ul-bullet){
+                        size: 1.2%P
+                    }
+                }
+                body
+            }
+        }
+
+        header()
+        body
+    }
+}
+
+////////////////////
+// CONCLUSION SLIDE
+////////////////////
+
+@define conclusion-slide(title){
+    content-slide(title: either("$title", "Conclusion")){
+        body
+    }
+}
+
+////////////////////
+// THANK YOU SLIDE
+////////////////////
+
+@define thankyou-slide(title:""){
+    page{
+        rectangle(background: "#ffffff")
+
+        styles{
+            (.thankyou-title){
+                color: "#0f172a",
+                origin: center,
+                position: (50, 42),
+                font-size: 9%P,
+                font-family: "SansSerif",
+                font-bold
+            }
+            (.thankyou-subtitle){
+                color: documentColors[1],
+                origin: center,
+                position: (50, 55),
+                font-size: 4.5%P,
+                font-family: "SansSerif",
+                font-bold
+            }
+            (.thankyou-author){
+                color: "#64748b",
+                origin: center,
+                position: (50, 68),
+                font-size: 3.5%P,
+                font-family: "SansSerif"
+            }
+            (.thankyou-email){
+                color: documentColors[1],
+                origin: center,
+                position: (50, 75),
+                font-size: 3.2%P,
+                font-family: "SansSerif"
+            }
+        }
+
+        // Center accent line
+        rectangle(
+            position: (40, 62),
+            size: (20, 0.4),
+            background: documentColors[1]
+        )
+
+        @(thankyou-title)    text(either("$title", "Thank You!"))
+        @(thankyou-subtitle) text("Questions & Discussion")
+        @(thankyou-author)   text(either("${documentAuthor}", ""))
+        @(thankyou-email)    text(either("${documentAuthorEmail}", ""))
+        body
+    }
+}

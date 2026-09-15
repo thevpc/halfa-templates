@@ -1,0 +1,889 @@
+////////////////////
+// classic theme (single file to simplify AI edition)
+////////////////////
+
+import(
+    "common-functions"
+    "plantuml"
+    "animated-gif"
+    "svg"
+    "shapes2d"
+    "shapes3d"
+    "plot2d"
+    "presenters"
+    "latex"
+)
+
+
+
+////////////////////
+// VARS
+////////////////////
+
+documentTitle:="Document Title"
+documentSubtitle:=""
+documentSubsubtitle:=""
+documentAuthor:="Author Name"
+documentAuthorEmail:="author@eniso.u-sousse.tn"
+documentAuthorAffiliation:="ENISo · Université de Sousse"
+documentChapter:=""
+documentDate:=""
+documentVersion:="1.0"
+
+themeShowPalette:=false
+documentColorAccent:=0
+
+// Official ENISo palette: Deep Navy, ENISo Azure, Engineering Crimson, Slate
+documentColors:=arrayLeftRotate([
+    "#003366", // 0: ENISo Navy Primary
+    "#0284c7", // 1: ENISo Azure Blue
+    "#b91c1c", // 2: Crimson Accent
+    "#0f766e", // 3: Deep Forest Teal
+    "#d97706", // 4: Warm Amber
+    "#4338ca", // 5: Royal Indigo
+    "#0369a1", // 6: Cobalt Blue
+    "#15803d", // 7: Rich Forest Green
+    "#7e22ce", // 8: Deep Purple
+    "#be123c", // 9: Rose Red
+    "#c2410c", // 10: Burnt Orange
+    "#0f172a"  // 11: Deep Slate Heading
+], either(documentColorAccent, 0))
+
+// Neutral surface & text variables (harmonized with meridian)
+documentBg:="#ffffff"            // page background — pure white
+documentSurface:="#f8fafc"       // raised panel / card surface
+documentSurfaceAlt:="#f1f5f9"    // secondary panel surface
+documentLine:="#e2e8f0"          // hairline dividers / borders
+documentTextPrimary:="#0f172a"   // primary text — dark slate
+documentTextSecondary:="#475569" // secondary text — muted slate
+documentTextMuted:="#94a3b8"     // muted / tertiary text
+
+// Semantic colors
+semanticInfoColor:="#0284c7"
+semanticInfoBg:="#f0f9ff"
+semanticWarningColor:="#d97706"
+semanticWarningBg:="#fffbeb"
+semanticErrorColor:="#dc2626"
+semanticErrorBg:="#fef2f2"
+semanticSuccessColor:="#16a34a"
+semanticSuccessBg:="#f0fdf4"
+
+////////////////////
+// STYLES
+////////////////////
+
+styles{
+    (*){
+        font-size: 4.5%P
+        font-family: "SansSerif",
+        color: "#1e293b"
+    }
+
+    source{
+        font-size: 3.2%P,
+        font-family: "monospaced",
+        source-primary-color: "#f8fafc"
+        source-keyword-color: "#38bdf8"
+        source-separator-color: "#94a3b8"
+        source-string-color: "#4ade80"
+        source-comments-color: "#94a3b8"
+        source-number-color: "#fbbf24"
+        source-keyword-font-bold
+        background: "#0a192f"
+        color: "#f8fafc"
+        draw-contour: true
+        padding: (1%P, 0.5%P)
+    }
+
+    page{
+        background: "#ffffff"
+    }
+
+    text{
+        text-wrap: wrap
+    }
+
+    (.ul-item){
+        margin: (4, 0)
+        at: left,
+    }
+    (.ul-bullet){
+        background: documentColors[1]
+        at: left,
+        size: 2%P,
+        bullet-align: top
+    }
+    (.ol-bullet){
+        color: documentColors[0]
+        at: center,
+        font-bold
+    }
+    (.ol-item){
+        at: left,
+        margin: (3, 0)
+    }
+    (.compact){
+        font-size: 2.3%P
+    }
+    (.compact-list){
+        font-size: 2.3%P
+    }
+    (.large){
+        font-size: 3.4%P
+    }
+    ellipse{
+        at: center,
+    }
+    arc{
+        at: center,
+    }
+
+    (.image-fig){
+        margin: 2
+    }
+    (.image-fig-legend){
+        at: bottom
+        font-size: 1.5%P
+        color: "#64748b"
+        margin: (1, 1, 1, 2)
+    }
+    (.image-fig-title){
+        at: top
+        font-size: 3.5%P
+        font-bold,
+        color: documentColors[0]
+    }
+}
+
+////////////////////
+// COMPONENTS
+////////////////////
+
+@define image-fig(src, title:"", legend:"", at:center, size:100){
+    @(img) group(at: at, size: size){
+        rectangle(color: "#cbd5e1", stroke: dashed, size: 98, round-corner: 4)
+        @(image-fig) image(src, size: (95, 85), at: center, preserve-aspect-ratio)
+        @(image-fig-title) text("$title")
+        @(image-fig-legend) text("$legend")
+    }
+}
+
+@define card(accentColor: ""){
+    group(margin: 1, row-weight: 70){
+        rectangle(background: documentSurface, color: documentLine, draw-contour: true, round-corner: 4)
+        rectangle(background: either(accentColor, documentColors[0]), position: (0, 6), size: (0.35%P, 88))
+        @define kicker(text, color: ""){
+            group(position: (4, 3), size: (92, 8), origin: top-left){
+                rectangle(position: (0, 50), size: (1.2%P, 0.35%P), origin: left, background: either(color, either(accentColor, documentColors[0])))
+                text("${text}", position: (1.8%P, 50), origin: left, font-size: 2.2%P, font-bold, color: either(color, either(accentColor, documentColors[0])))
+            }
+        }
+        styles{
+            unordered-list{
+                position: (4, 12)
+                size: (92, 86)
+                origin: top-left
+            }
+            ul{
+                position: (4, 12)
+                size: (92, 86)
+                origin: top-left
+            }
+            ordered-list{
+                position: (4, 12)
+                size: (92, 86)
+                origin: top-left
+            }
+            ol{
+                position: (4, 12)
+                size: (92, 86)
+                origin: top-left
+            }
+            column{
+                position: (4, 12)
+                size: (92, 86)
+                origin: top-left
+            }
+            col{
+                position: (4, 12)
+                size: (92, 86)
+                origin: top-left
+            }
+            source{
+                position: (4, 12)
+                size: (92, 86)
+                origin: top-left
+                font-size: 1.85%P
+            }
+            (.ul-item){
+                font-size: 2.3%P
+                margin: (1.2, 0)
+                text-wrap: wrap
+            }
+            (.ol-item){
+                font-size: 2.3%P
+                margin: (1.2, 0)
+                text-wrap: wrap
+            }
+            (.ul-bullet){
+                size: 1.3%P
+            }
+        }
+        body
+    }
+}
+
+@define kicker(text, color: ""){
+    group(size: (100, 6)){
+        rectangle(position: (0, 50), size: (1.2%P, 0.35%P), origin: left, background: either(color, documentColors[0]))
+        text("${text}", position: (1.8%P, 50), origin: left, font-size: 2.2%P, font-bold, color: either(color, documentColors[0]))
+    }
+}
+
+@define divider(width: 40, thickness: 0.3){
+    rectangle(size: (width, thickness), background: documentColors[0])
+}
+
+@define stat(value, label){
+    group(margin: 1){
+        text("${value}", position: (50, 38), origin: center, font-size: 7.5%P, font-bold, color: documentColors[0])
+        text("${label}", position: (50, 68), origin: center, font-size: 2.8%P, color: documentTextSecondary)
+    }
+}
+
+@define quote(author: ""){
+    group(margin: 3){
+        rectangle(background: documentColors[0], position: (0, 4), size: (0.35%P, 92))
+        group(position: (5, 4), size: (93, 92)){
+            body
+            text(either("${author}", ""), position: (0, 92), font-size: 3%P, color: documentTextSecondary, font-bold)
+        }
+    }
+}
+
+@define panel(background: ""){
+    group(margin: 2){
+        rectangle(
+            background: either(background, "#f8fafc"),
+            color: documentLine,
+            draw-contour: true,
+            round-corner: 6,
+            shadow: {distance: (0, 2), radius: 6, color: "#cbd5e1"}
+        )
+        group(position: (3, 3), size: (94, 94)){
+            body
+        }
+    }
+}
+
+@define callout(title, accentColor, bgColor){
+    group(margin: 2){
+        rectangle(background: bgColor, color: accentColor, draw-contour: true, round-corner: 6)
+        rectangle(background: accentColor, position: (0, 0), size: (1.5, 100))
+        group(position: (3, 2), size: (95, 96)){
+            text(either("$title", ""), font-bold, color: accentColor, font-size: 3.5%P)
+            body
+        }
+    }
+}
+
+@define hint-info(title){
+    callout(title: either("${title}", "Information"), accentColor: semanticInfoColor, bgColor: semanticInfoBg){
+        body
+    }
+}
+
+@define hint-warning(title){
+    callout(title: either("${title}", "Warning"), accentColor: semanticWarningColor, bgColor: semanticWarningBg){
+        body
+    }
+}
+
+@define hint-error(title){
+    callout(title: either("${title}", "Important"), accentColor: semanticErrorColor, bgColor: semanticErrorBg){
+        body
+    }
+}
+
+@define hint-success(title){
+    callout(title: either("${title}", "Note"), accentColor: semanticSuccessColor, bgColor: semanticSuccessBg){
+        body
+    }
+}
+
+
+
+@define definition(title){
+    callout(title: either("$title", "Définition"), accentColor: "#0284c7", bgColor: "#f0f9ff"){
+        body
+    }
+}
+
+@define theorem(title){
+    callout(title: either("$title", "Théorème"), accentColor: "#003366", bgColor: "#f1f5f9"){
+        body
+    }
+}
+
+@define example(title){
+    callout(title: either("$title", "Exemple"), accentColor: "#059669", bgColor: "#f0fdf4"){
+        body
+    }
+}
+
+@define remark(title){
+    callout(title: either("$title", "Remarque"), accentColor: "#d97706", bgColor: "#fffbeb"){
+        body
+    }
+}
+
+@define hint-info(title){
+    definition(title: either("$title", "Information")){
+        body
+    }
+}
+
+@define hint-warning(title){
+    remark(title: either("$title", "Attention")){
+        body
+    }
+}
+
+@define hint-error(title){
+    callout(title: either("$title", "Important"), accentColor: "#dc2626", bgColor: "#fef2f2"){
+        body
+    }
+}
+
+////////////////////
+// COVER SLIDE
+////////////////////
+
+@define cover-slide(){
+    page{
+        styles{
+            (.institution){
+                color: "#003366",
+                origin: left,
+                position: (5, 7),
+                font-size: 2.8%P,
+                font-bold
+            }
+            (.title){
+                color: "#003366",
+                origin: center,
+                position: (52, 42),
+                font-size: 7.5%P,
+                font-family: "SansSerif",
+                font-bold
+            }
+            (.subtitle){
+                color: "#0284c7",
+                origin: center,
+                position: (52, 53),
+                font-size: 4.8%P,
+                font-family: "SansSerif",
+                font-bold
+            }
+            (.subsubtitle){
+                color: "#64748b",
+                origin: center,
+                position: (52, 61),
+                font-size: 3.5%P,
+                font-family: "SansSerif"
+            }
+            (.author){
+                color: "#0f172a",
+                origin: center,
+                position: (52, 76),
+                font-size: 3.8%P,
+                font-bold
+            }
+            (.email){
+                color: "#0284c7",
+                origin: center,
+                position: (52, 82),
+                font-size: 3%P
+            }
+            (.affiliation){
+                color: "#64748b",
+                origin: center,
+                position: (52, 88),
+                font-size: 3%P
+            }
+            (.date){
+                color: "#94a3b8",
+                origin: center,
+                position: (52, 94),
+                font-size: 2.8%P
+            }
+        }
+
+        // Clean white background
+        rectangle(background: "#ffffff")
+
+        // ── Full-height left navy sidebar (wider than content slides for emphasis)
+        rectangle(
+            position: (0, 0),
+            size: (2.5, 100),
+            background: "#003366"
+        )
+        // Azure accent stripe
+        rectangle(
+            position: (2.5, 0),
+            size: (0.6, 100),
+            background: "#0284c7"
+        )
+
+        // Institutional header area background
+        rectangle(
+            position: (3.1, 0),
+            size: (96.9, 13),
+            background: "#f8fafc"
+        )
+
+        // Institution header bottom rule
+        rectangle(
+            position: (3.1, 13),
+            size: (96.9, 0.25),
+            background: "#e2e8f0"
+        )
+
+        // Institutional text
+        @(institution) text("École Nationale d'Ingénieurs de Sousse · Université de Sousse")
+
+        // ENISo logo top-right (fixed: 80% of the 13% header area)
+        image("images/eniso.png", origin: right, position: (97, 6.5), size: (9, 10), preserve-aspect-ratio)
+
+        // Diagonal azure accent line across middle section
+        rectangle(
+            position: (20, 66),
+            size: (60, 0.5),
+            background: "#0284c7"
+        )
+        rectangle(
+            position: (36, 68),
+            size: (28, 0.2),
+            background: "#e2e8f0"
+        )
+
+        @(title)       text("${documentTitle}")
+        @(subtitle)    text(value: either("${documentSubtitle}", ""))
+        @(subsubtitle) text(either("${documentSubsubtitle}", ""))
+        @(author)      text(either("${documentAuthor}", ""))
+        @(email)       text(either("${documentAuthorEmail}", ""))
+        @(affiliation) text(either("${documentAuthorAffiliation}", ""))
+        @(date)        text(either("${documentDate}", ""))
+        body
+    }
+}
+
+////////////////////
+// AGENDA SLIDE
+////////////////////
+
+@define agenda-slide(title:""){
+    content-slide(title: either("$title", "Plan")){
+        styles{
+            (.ul-item){
+                margin: (2.8, 0)
+                font-size: 3.4%P
+                text-wrap: wrap
+            }
+            (.ol-item){
+                margin: (2.8, 0)
+                font-size: 3.4%P
+                text-wrap: wrap
+            }
+            (.ul-bullet){
+                size: 1.8%P
+            }
+            (.ol-bullet){
+                font-size: 3.4%P
+            }
+        }
+        body
+    }
+}
+
+////////////////////
+// CONTENT SLIDE
+////////////////////
+
+@define content-slide(title:""){
+    page{
+        rectangle(background: "#f8fafc")
+
+        // ── Left navy sidebar ─────────────────────────────────────────────
+        rectangle(
+            position: (0, 0),
+            size: (1.2, 100),
+            background: "#003366"
+        )
+        // Azure accent stripe next to sidebar
+        rectangle(
+            position: (1.2, 0),
+            size: (0.4, 100),
+            background: "#0284c7"
+        )
+
+        // ── Header ────────────────────────────────────────────────────────
+        @define header{
+            group(
+                position: (1.6, 0),
+                size: (98.4, 11.5),
+                origin: top-left
+            ){
+                // White header background
+                rectangle(background: "#ffffff")
+
+                // Header bottom rule
+                rectangle(
+                    position: (0, 97),
+                    size: (100, 0.5),
+                    background: "#e2e8f0"
+                )
+
+                // Azure underline beneath the title block
+                rectangle(
+                    position: (0, 94),
+                    size: (28, 3.5),
+                    background: "#0284c7"
+                )
+
+                // Slide title
+                text(
+                    "${title}",
+                    position: (1.5, 52),
+                    origin: left,
+                    font-size: 4.8%P,
+                    font-bold,
+                    color: "#003366"
+                )
+
+                // Chapter breadcrumb (right)
+                text(
+                    either("${documentChapter}", "${documentTitle}"),
+                    position: (88, 52),
+                    origin: right,
+                    font-size: 2.6%P,
+                    color: "#64748b"
+                )
+
+                // ENISo logo — 80% of header height, right-anchored
+                image("images/eniso.png", origin: right, position: (97, 50), size: (8, 80), preserve-aspect-ratio)
+
+                body
+            }
+        }
+
+        // ── Body area ─────────────────────────────────────────────────────
+        @define body{
+            group(
+                position: (3, 14),
+                size: (94, 80),
+                origin: top-left,
+                font-size: 4.2%P,
+                color: "#1e293b"
+            ){
+                body
+            }
+        }
+
+        @define body2a{
+            col(
+                position: (3, 14),
+                size: (45, 82),
+                origin: top-left,
+                font-size: 2.8%P,
+                color: "#1e293b"
+            ){
+                styles{
+                    (.ul-item){
+                        font-size: 2.6%P
+                        margin: (1.4, 0)
+                        text-wrap: wrap
+                    }
+                    (.ol-item){
+                        font-size: 2.6%P
+                        margin: (1.4, 0)
+                        text-wrap: wrap
+                    }
+                    (.ul-bullet){
+                        size: 1.4%P
+                    }
+                }
+                body
+            }
+        }
+
+        @define body2b{
+            col(
+                position: (52, 14),
+                size: (45, 82),
+                origin: top-left,
+                font-size: 2.8%P,
+                color: "#1e293b"
+            ){
+                styles{
+                    (.ul-item){
+                        font-size: 2.6%P
+                        margin: (1.4, 0)
+                        text-wrap: wrap
+                    }
+                    (.ol-item){
+                        font-size: 2.6%P
+                        margin: (1.4, 0)
+                        text-wrap: wrap
+                    }
+                    (.ul-bullet){
+                        size: 1.4%P
+                    }
+                }
+                body
+            }
+        }
+
+        @define body3a{
+            col(
+                position: (3, 14),
+                size: (29, 82),
+                origin: top-left,
+                font-size: 2.4%P,
+                color: "#1e293b"
+            ){
+                styles{
+                    (.ul-item){
+                        font-size: 2.2%P
+                        margin: (1.2, 0)
+                        text-wrap: wrap
+                    }
+                    (.ol-item){
+                        font-size: 2.2%P
+                        margin: (1.2, 0)
+                        text-wrap: wrap
+                    }
+                    (.ul-bullet){
+                        size: 1.2%P
+                    }
+                }
+                body
+            }
+        }
+
+        @define body3b{
+            col(
+                position: (35, 14),
+                size: (29, 82),
+                origin: top-left,
+                font-size: 2.4%P,
+                color: "#1e293b"
+            ){
+                styles{
+                    (.ul-item){
+                        font-size: 2.2%P
+                        margin: (1.2, 0)
+                        text-wrap: wrap
+                    }
+                    (.ol-item){
+                        font-size: 2.2%P
+                        margin: (1.2, 0)
+                        text-wrap: wrap
+                    }
+                    (.ul-bullet){
+                        size: 1.2%P
+                    }
+                }
+                body
+            }
+        }
+
+        @define body3c{
+            col(
+                position: (67, 14),
+                size: (29, 82),
+                origin: top-left,
+                font-size: 2.4%P,
+                color: "#1e293b"
+            ){
+                styles{
+                    (.ul-item){
+                        font-size: 2.2%P
+                        margin: (1.2, 0)
+                        text-wrap: wrap
+                    }
+                    (.ol-item){
+                        font-size: 2.2%P
+                        margin: (1.2, 0)
+                        text-wrap: wrap
+                    }
+                    (.ul-bullet){
+                        size: 1.2%P
+                    }
+                }
+                body
+            }
+        }
+
+        // ── Footer ────────────────────────────────────────────────────────
+        rectangle(
+            position: (1.6, 96.5),
+            size: (98.4, 0.2),
+            background: "#e2e8f0"
+        )
+
+        // Small azure dot marker in footer
+        ellipse(
+            position: (2.6, 98.4),
+            size: (0.7, 1.2),
+            background: "#0284c7"
+        )
+
+        // Footer left: document title
+        text(
+            either("${documentTitle}", "ENISo"),
+            position: (3.8, 98.4),
+            origin: left,
+            font-size: 2%P,
+            color: "#94a3b8"
+        )
+
+        // Footer right: author
+        text(
+            either("${documentAuthor}", ""),
+            position: (98.4, 98.4),
+            origin: right,
+            font-size: 2%P,
+            color: "#94a3b8"
+        )
+
+        header()
+        body
+    }
+}
+
+////////////////////
+// CONCLUSION SLIDE
+////////////////////
+
+@define conclusion-slide(title:""){
+    content-slide(title: either("$title", "Conclusion")){
+        styles{
+            (.title){
+                color: "#003366",
+                origin: center,
+                position: (50, 40),
+                font-size: 8%P,
+                font-family: "SansSerif",
+                font-bold
+            }
+            (.author){
+                color: "#0284c7",
+                origin: center,
+                position: (50, 56),
+                font-size: 4%P,
+                font-family: "SansSerif",
+                font-bold
+            }
+        }
+        body
+    }
+}
+
+////////////////////
+// THANK YOU SLIDE
+////////////////////
+
+@define thankyou-slide(title:"", author:""){
+    page{
+        rectangle(background: "#ffffff")
+
+        styles{
+            (.title){
+                color: "#003366",
+                origin: center,
+                position: (52, 43),
+                font-size: 8%P,
+                font-family: "SansSerif",
+                font-bold
+            }
+            (.subtitle){
+                color: "#0284c7",
+                origin: center,
+                position: (52, 55),
+                font-size: 4.2%P,
+                font-family: "SansSerif",
+                font-bold
+            }
+            (.author){
+                color: "#0f172a",
+                origin: center,
+                position: (52, 70),
+                font-size: 3.6%P,
+                font-family: "SansSerif",
+                font-bold
+            }
+            (.email){
+                color: "#0284c7",
+                origin: center,
+                position: (52, 77),
+                font-size: 3%P,
+                font-family: "SansSerif"
+            }
+        }
+
+        // ── Full-height left navy sidebar (same as cover)
+        rectangle(
+            position: (0, 0),
+            size: (2.5, 100),
+            background: "#003366"
+        )
+        rectangle(
+            position: (2.5, 0),
+            size: (0.6, 100),
+            background: "#0284c7"
+        )
+
+        // Header area background
+        rectangle(
+            position: (3.1, 0),
+            size: (96.9, 13),
+            background: "#f8fafc"
+        )
+        rectangle(
+            position: (3.1, 13),
+            size: (96.9, 0.25),
+            background: "#e2e8f0"
+        )
+
+        // Institutional header
+        text("École Nationale d'Ingénieurs de Sousse · Université de Sousse",
+            position: (5, 7),
+            origin: left,
+            font-size: 2.8%P,
+            font-bold,
+            color: "#003366"
+        )
+
+        // ENISo Logo (fixed)
+        image("images/eniso.png", origin: right, position: (97, 6.5), size: (9, 10), preserve-aspect-ratio)
+
+        // Accent dividers in center
+        rectangle(
+            position: (20, 63),
+            size: (60, 0.5),
+            background: "#0284c7"
+        )
+        rectangle(
+            position: (36, 65),
+            size: (28, 0.2),
+            background: "#e2e8f0"
+        )
+
+        @(title)    text(either("$title", "Merci pour votre attention"))
+        @(subtitle) text("Questions & Discussion")
+        @(author)   text(either("$author", either("${documentAuthor}", "")))
+        @(email)    text(either("${documentAuthorEmail}", ""))
+        body
+    }
+}

@@ -1,5 +1,0 @@
-@define agenda-slide(title:""){
-    content-slide(title: either("$title", "Plan")){
-        body
-    }
-}

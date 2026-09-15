@@ -1,0 +1,581 @@
+////////////////////
+// classic theme (single file to simplify AI edition)
+////////////////////
+
+import(
+    "common-functions"
+    "plantuml"
+    "animated-gif"
+    "svg"
+    "shapes2d"
+    "shapes3d"
+    "plot2d"
+    "presenters"
+    "latex"
+)
+
+
+////////////////////
+// VARS
+////////////////////
+
+documentTitle:="My Document"
+documentSubtitle:=""
+documentSubsubtitle:=""
+documentAuthor:="me"
+documentAuthorEmail:="me@here.com"
+documentAuthorAffiliation:=""
+documentChapter:=""
+documentDate:=""
+documentVersion:="1.0"
+
+themeShowPalette:=false
+documentColorAccent:=1
+documentColors:=arrayLeftRotate(["#FC4100","#00215E","#DE3163","#2C4E80","#FF8F00","#FF7F50","#FFBF00","#FFDB00","#9FE2BF","#40E0D0","#CCCCFF","#6495ED"],either((documentColorAccent - 1),0))
+//documentColors:=arrayLeftRotate(["#26355D","#AF47D2","#DE3163","#1d8147","#FF8F00","#FF7F50","#FFBF00","#FFDB00","#9FE2BF","#40E0D0","#CCCCFF","#6495ED"],either((documentColorAccent - 1),0))
+
+////////////////////
+// STYLES
+////////////////////
+
+styles{
+    (*){
+        font-size : 5%P
+        debug-color: red,
+        font-family : "Serif",
+    }
+
+    source{
+        font-size : 3%P,
+        font-family : "monospaced",
+        source-primary-color: documentColors
+        source-keyword-color: documentColors[1]
+        source-separator-color: documentColors[6]
+        source-string-color: documentColors[4]
+        source-comments-color: documentColors[12]
+        source-number-color: documentColors[3]
+        source-keyword-font-bold,
+        //draw-contour,
+
+    }
+
+    (.ul-item){
+        margin : (5,0)
+        at:left,
+    }
+    (.ul-bullet){
+        background: documentColors[1]
+        at:left,
+        size:3%P
+    }
+    (.ol-bullet){
+        color: documentColors[2]
+        at:center,
+    }
+    (.ol-item){
+        at:left,
+    }
+    (ellipse){
+        at:center,
+    }
+    arc{
+        at:center,
+    }
+
+    (.image-fig){
+        margin: 1
+    }
+    (.image-fig-legend){
+        at:bottom
+        font-size:3%P
+    }
+    (.image-fig-title){
+        at:top
+        font-size:4%P
+        font-bold,
+        color:documentColors[4]
+    }
+}
+
+////////////////////
+// COMPONENTS
+////////////////////
+
+@define Palette{
+    group(size:100%P){
+       rectangle(
+           origin : top-left,
+           position : (0.5,1),
+           size : (1,2),
+           background: documentColors[1],
+           rotate:0
+           color:gray
+           draw-contour
+       )
+       rectangle(
+           origin : top-left,
+           position : (0.5,3),
+           size : (1,2),
+           background: documentColors[2],
+           color:gray
+           rotate:0
+           draw-contour
+       )
+       rectangle(
+           origin : top-left,
+           position : (0.5,5),
+           size : (1,2),
+           background: documentColors[3],
+           rotate:0
+           color:gray
+           draw-contour
+       )
+       rectangle(
+           origin : top-left,
+           position : (0.5,7),
+           size : (1,2),
+           background: documentColors[4],
+           rotate:0
+           color:gray
+           draw-contour
+       )
+       rectangle(
+           origin : top-left,
+           position : (0.5,9),
+           size : (1,2),
+           background: documentColors[5],
+           rotate:0
+           color:gray
+           draw-contour
+       )
+       rectangle(
+           origin : top-left,
+           position : (0.5,11),
+           size : (1,2),
+           background: documentColors[6],
+           rotate:0
+           color:gray
+           draw-contour
+       )
+       rectangle(
+           origin : top-left,
+           position : (1.5,1.5),
+           size : (1,2),
+           background: documentColors[7],
+           rotate:0
+           color:gray
+           draw-contour
+       )
+       rectangle(
+           origin : top-left,
+           position : (1.5,3.5),
+           size : (1,2),
+           background: documentColors[8],
+           rotate:0
+           color:gray
+           draw-contour
+       )
+       rectangle(
+           origin : top-left,
+           position : (1.5,5.5),
+           size : (1,2),
+           background: documentColors[9],
+           rotate:0
+           color:gray
+           draw-contour
+       )
+       rectangle(
+           origin : top-left,
+           position : (1.5,7.5),
+           size : (1,2),
+           background: documentColors[10],
+           rotate:0
+           color:gray
+           draw-contour
+       )
+       rectangle(
+           origin : top-left,
+           position : (1.5,9.5),
+           size : (1,2),
+           background: documentColors[11],
+           rotate:0
+           color:gray
+           draw-contour
+       )
+       rectangle(
+           origin : top-left,
+           position : (1.5,11.5),
+           size : (1,2),
+           background: documentColors[12],
+           rotate:0
+           color:gray
+           draw-contour
+       )
+    }
+}
+
+@define image-fig(src,title,legend){
+    @(img) group{
+        rectangle(color:gray , stroke:dashed,size:98,round-corner:3)
+        @(image-fig) image(src,size:(95,85),at:center)
+        @(image-fig-title) text("$title")
+        @(image-fig-legend) text("$legend")
+    }
+}
+
+
+////////////////////
+// COVER SLIDE
+////////////////////
+
+@define cover-slide(title,subtitle:"",subsubtitle:"",author:"",email:"",date:"",version:"",affiliation:""){
+        page{
+            styles{
+           (.title){
+               color: documentColors[1],
+               origin : center,
+               position : (25,25),
+               font-size:16%P,
+               font-family:Monospaced,
+               font-bold,
+               shadow:(color:documentColors[2],shift:(0.3,0.5))
+           }
+           (.subtitle){
+               color: documentColors[3]
+               origin : center,
+               position : (27,41),
+               font-size:7%P,
+               font-bold,
+               font-family:Serif,
+           }
+           (.subsubtitle){
+               color: documentColors[2]
+               origin : center,
+               position : (25,60),
+               font-size:5%P,
+               font-bold,
+               font-family:Serif,
+           }
+           (.author){
+               color: documentColors[5],
+               origin : center,
+               position : (70,40),
+               font-size:5%P,
+               font-bold,
+           }
+           (.email){
+               color: documentColors[5],
+               origin : center,
+               position : (70,46),
+               font-size:5%P,
+               font-bold,
+           }
+           (.affiliation){
+               color: documentColors[5],
+               origin : center,
+               position : (70,52),
+               font-size:5%P,
+               font-bold,
+           }
+           (.date){
+               color: documentColors[5],
+               origin : center,
+               position : (70,78),
+               font-size:5%P,
+               font-bold,
+           }
+           (.version){
+               color: documentColors[5],
+               origin : center,
+               position : (70,86),
+               font-size:5%P,
+               font-bold,
+           },
+           (.H1){
+               font-size:20%P,
+               color:documentColors[1],
+               font-bold
+               shadow:(shift:(0,0.2))
+           }
+        }
+
+            polygon(points:[(43,60),(100,60),(100,95),(35,95)],background-color:documentColors[1])
+            polygon(points:[(60,0),(100,0),(100,90),(40,90)],background-color:documentColors[2])
+            polygon(points:[(55,6),(60,6),(53,40),(47,40)],stroke:5,color:documentColors[7])
+            polygon(points:[(58,0),(63,0),(56,30),(51,30)],background-color:documentColors[1])
+
+
+            @(title)       text("${documentTitle}")
+        @(subtitle)    text(value: either("${documentSubtitle}",""))
+        @(subsubtitle) text(either("${documentSubsubtitle}",""))
+        @(author)      text(either("${documentAuthor}",""))
+        @(email)       text(either("${documentAuthorEmail}",""))
+        @(affiliation) text(either("${documentAuthorAffiliation}",""))
+        @(date)        text(either("${documentDate}",""))
+        @(version)     text(either("${documentVersion}",""))
+           body
+
+        }
+
+}
+
+////////////////////
+// AGENDA SLIDE
+////////////////////
+
+@define agenda-slide(title,subtitle:"",subsubtitle:"",author:"",email:"",date:"",version:"",affiliation:""){
+    page{
+         polygon(points:[(30,0),(100,0),(100,100),(10,100)],background-color:documentColors[2])
+         polygon(points:[(27,0),(30,0),(10,100),(7,100)],background-color:documentColors[1])
+         text("${title}",
+            position:(35,5)
+            font-size:10%P,
+            color:documentColors[3],
+            font-bold
+            shadow:(shift:(0,0.2))
+         )
+            styles:{
+                "*":{
+                    color:white
+                }
+            }
+
+        @define body{
+            group(
+                    position : (25,22),
+                    size     : (98,72),
+                    origin : top-left,
+                    font-size: 5%P,
+                    color: "#6b3a09",
+                    font-bold
+            ){
+                styles:{
+                    "*" :{
+                        foreground-color:dark-gray
+                        line-color:dark-gray
+                        color:white
+                    }
+                }
+                body
+            }
+        }
+        body
+    }
+}
+
+////////////////////
+// CONTENT SLIDE
+////////////////////
+
+/**
+ *
+ */
+@define content-slide(title,variant:1){
+    page{
+          validVariant=((either(variant,1)%14)+1)
+          titleColor=documentColors[3]
+
+          if(validVariant==1){
+              polygon(points:[(0,0),(57,0),(50,100),(0,100)],background-color:documentColors[1])
+              polygon(points:[(0,2),(60,2),(53,97),(0,97)],background-color:documentColors[2])
+          }
+
+          if(validVariant==2){
+              polygon(points:[(60,0),(100,0),(100,100),(40,100)],background-color:documentColors[2])
+              polygon(points:[(57,0),(60,0),(40,100),(37,100)],background-color:documentColors[1])
+          }
+
+          if(validVariant==3){
+                titleColor=documentColors[2]
+                polygon(points:[(30,0),(100,0),(100,100),(10,100)],background-color:documentColors[3])
+                polygon(points:[(27,0),(30,0),(10,100),(7,100)],background-color:documentColors[1])
+          }
+
+          if(validVariant==4){
+                titleColor=white
+                polygon(points:[(0,0),(100,0),(100,10),(0,20)],background-color:documentColors[3])
+          }
+
+          if(either(validVariant,1)==5){
+                polygon(points:[(43,60),(100,60),(100,95),(35,95)],background-color:documentColors[3])
+                polygon(points:[(60,0),(100,0),(100,90),(40,90)],background-color:documentColors[2])
+                polygon(points:[(55,6),(60,6),(53,40),(47,40)],stroke:5,color:white)
+                polygon(points:[(58,0),(63,0),(56,30),(51,30)],background-color:documentColors[3])
+          }
+
+          if(either(validVariant,1)==6){
+                polygon(points:[(0,0),(0,100),(100,100),(100,0)],background-color:white)
+                polygon(points:[(0,0),(50,0),(70,100),(0,100)],background-color:documentColors[2])
+                polygon(points:[(50,5),(53,5),(70,95),(67,95)],stroke:5,color:gray)
+                polygon(points:[(50,0),(53,0),(70,90),(67,90)],background-color:documentColors[1])
+          }
+
+          if(either(validVariant,1)==7){
+                polygon(points:[(0,5),(12,5),(0,35),(0,35)],background-color:documentColors[1])
+                polygon(points:[(0,0),(10,0),(0,25),(0,20)],background-color:documentColors[2])
+                polygon(points:[(0,95),(12,95),(0,65),(0,65)],background-color:documentColors[1])
+                polygon(points:[(0,100),(10,100),(0,75),(0,80)],background-color:documentColors[2])
+                polygon(points:[(60,53),(70,13),(100,13),(100,93),(70,93)],background-color:documentColors[1])
+                polygon(points:[(60,50),(70,10),(100,10),(100,90),(70,90)],background-color:documentColors[2])
+          }
+
+          if(either(validVariant,1)==8){
+                polygon(points:[(55,6),(60,6),(53,40),(47,40)],stroke:5,color:white)
+                polygon(points:[(0,5),(12,5),(0,35),(0,35)],background-color:documentColors[1])
+                polygon(points:[(0,0),(10,0),(0,25),(0,20)],background-color:documentColors[2])
+                polygon(points:[(75,0),(100,0),(100,80),(96,100),(51,100)],background-color:documentColors[1])
+                polygon(points:[(60,0),(100,0),(100,75),(95,98),(40,98)],background-color:documentColors[2])
+                polygon(points:[(58,0),(63,0),(56,30),(51,30)],background-color:documentColors[1])
+          }
+
+
+          if(either(validVariant,1)==9){
+                polygon(points:[(0,15),(100,15),(100,85),(0,85)],background-color:documentColors[2])
+                polygon(points:[(55,0),(95,0),(95,100),(55,100)],background-color:documentColors[1])
+          }
+
+
+          if(either(validVariant,1)==10){
+                polygon(points:[(0,0),(57,0),(50,100),(0,100)],background-color:documentColors[1])
+                polygon(points:[(0,2),(70,2),(63,97),(0,97)],background-color:documentColors[2])
+          }
+
+
+          if(either(validVariant,1)==11){
+                polygon(points:[(0,0),(100,0),(100,100),(0,100)],background-color:documentColors[4])
+                polygon(points:[(0,0),(40,0),(40,100),(0,100)],background-color:documentColors[2])
+          }
+
+          if(either(validVariant,1)==12){
+                polygon(points:[(0,0),(100,0),(100,100),(0,100)],background-color:documentColors[4])
+          }
+
+          if(either(validVariant,1)==13){
+                polygon(points:[(0,0),(45,0),(45,100),(0,100)],background-color:documentColors[2])
+          }
+
+         text("${title}",
+            position:(35,5)
+            font-size:10%P,
+            color:titleColor,
+            font-bold
+            shadow:(shift:(0,0.2))
+         )
+           @define body{
+              group(
+                      position : (0,22),
+                      size     : (98,72),
+                      origin : top-left,
+                      font-size: 5%P,
+                      color: "#6b3a09",
+                      font-bold
+              ){
+                  styles:{
+                      "*" :{
+                          color: "#6b3a09",
+                      }
+                  }
+                  body
+              }
+          }
+          body
+    }
+}
+
+////////////////////
+// CONCLUSION SLIDE
+////////////////////
+
+@define conclusion-slide(title,subtitle:"",subsubtitle:"",author:"",email:"",date:"",version:"",affiliation:""){
+    page{
+         polygon(points:[(30,0),(100,0),(100,100),(10,100)],background-color:documentColors[2])
+         polygon(points:[(27,0),(30,0),(10,100),(7,100)],background-color:documentColors[1])
+         text("${title}",
+            position:(35,5)
+            font-size:10%P,
+            color:documentColors[3],
+            font-bold
+            shadow:(shift:(0,0.2))
+         )
+            styles:{
+                "*":{
+                    color:white
+                }
+            }
+
+        @define body{
+            group(
+                    position : (25,22),
+                    size     : (98,72),
+                    origin : top-left,
+                    font-size: 5%P,
+                    color: "#6b3a09",
+                    font-bold
+            ){
+                styles:{
+                    "*" :{
+                        foreground-color:dark-gray
+                        line-color:dark-gray
+                        color:white
+                    }
+                }
+                body
+            }
+        }
+        body
+    }
+}
+
+////////////////////
+// THANK YOU SLIDE
+////////////////////
+
+@define conclusion-slide(title:"",author:""){
+    page{
+        styles{
+           (.title){
+               color: "#dddddd",
+               origin : center,
+               position : (50,30),
+               size : (100,30),
+               font-size: 15%P,
+               font-bold,
+               background: documentColors[1],
+           }
+           (.subtitle){
+               color: "#2c779a"
+               origin : center,
+               position : (50,50),
+               font-size: 10%P,
+               font-bold,
+           }
+           (.author){
+               color: "#112f3d",
+               origin : center,
+               position : (50,60),
+               font-size: 5%P,
+               font-bold,
+           }
+           (.date){
+               color: "#112f3d",
+               origin : center,
+               position : (50,65),
+               font-size: 10%P,
+               font-bold
+           }
+           (.version){
+               color: "#112f3d",
+               origin : center,
+               position : (50,69),
+               font-size: 10%P,
+               font-bold,
+           },
+        }
+       rectangle(
+           background: white,
+       )
+        @(title)    text(either("$title","Thank you")),
+        @(author)     text(either("${documentAuthor}","")),
+        body
+    }
+}
