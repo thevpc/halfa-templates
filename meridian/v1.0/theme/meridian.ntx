@@ -90,14 +90,14 @@ styles{
         source-comments-color: documentTextMuted
         source-number-color: documentColors[5]
         source-keyword-font-bold
-        background: "#0a0c10"
+        background-color: "#0a0c10"
         color: documentTextPrimary
         draw-contour: true
         padding: (0.8%P, 0.4%P)
     }
 
     page{
-        background: documentBg
+        background-color: documentBg
     }
 
     text{
@@ -111,7 +111,7 @@ styles{
         text-wrap: wrap
     }
     (.ul-bullet){
-        background: documentColors[0]
+        background-color: documentColors[0]
         at: left,
         size: 1.6%P
     }
@@ -197,7 +197,7 @@ styles{
 
 @define image-fig(src, title:"", legend:"", at:center, size:30){
     @(img) group(at: at, size: size){
-        rectangle(background: documentSurface, color: documentLine, draw-contour: true, round-corner: 3)
+        rectangle(background-color: documentSurface, color: documentLine, draw-contour: true, round-corner: 3)
         @(image-fig) image(src, size: (92, 80), at: center, preserve-aspect-ratio)
         @(image-fig-title) text("${title}")
         @(image-fig-legend) text("${legend}")
@@ -206,11 +206,11 @@ styles{
 
 @define card(accentColor: ""){
     group(margin: 1, row-weight: 70){
-        rectangle(background: documentSurface, color: documentLine, draw-contour: true, round-corner: 4)
-        rectangle(background: either(accentColor, documentColors[0]), position: (0, 6), size: (0.35%P, 88))
+        rectangle(background-color: documentSurface, color: documentLine, draw-contour: true, round-corner: 4)
+        rectangle(background-color: either(accentColor, documentColors[0]), position: (0, 6), size: (0.35%P, 88))
         @define kicker(text, color: ""){
             group(position: (4, 3), size: (92, 8), origin: top-left){
-                rectangle(position: (0, 50), size: (1.2%P, 0.35%P), origin: left, background: either(color, either(accentColor, documentColors[0])))
+                rectangle(position: (0, 50), size: (1.2%P, 0.35%P), origin: left, background-color: either(color, either(accentColor, documentColors[0])))
                 text("${text}", position: (1.8%P, 50), origin: left, font-size: 2.2%P, font-bold, color: either(color, either(accentColor, documentColors[0])))
             }
         }
@@ -271,13 +271,13 @@ styles{
 
 @define kicker(text, color: ""){
     group(size: (100, 6)){
-        rectangle(position: (0, 50), size: (1.2%P, 0.35%P), origin: left, background: either(color, documentColors[0]))
+        rectangle(position: (0, 50), size: (1.2%P, 0.35%P), origin: left, background-color: either(color, documentColors[0]))
         text("${text}", position: (1.8%P, 50), origin: left, font-size: 2.2%P, font-bold, color: either(color, documentColors[0]))
     }
 }
 
 @define divider(width: 40, thickness: 0.3){
-    rectangle(size: (width, thickness), background: documentColors[0])
+    rectangle(size: (width, thickness), background-color: documentColors[0])
 }
 
 @define stat(value, label){
@@ -289,7 +289,7 @@ styles{
 
 @define quote(author: ""){
     group(margin: 3){
-        rectangle(background: documentColors[0], position: (0, 4), size: (0.35%P, 92))
+        rectangle(background-color: documentColors[0], position: (0, 4), size: (0.35%P, 92))
         group(position: (5, 4), size: (93, 92)){
             body
             text(either("${author}", ""), position: (0, 92), font-size: 3%P, color: documentTextSecondary, font-bold)
@@ -305,7 +305,7 @@ styles{
 @define panel(background: ""){
     group(margin: 2){
         rectangle(
-            background: either(background, "#f5f4f0"),
+            background-color: either(background, "#f5f4f0"),
             color: documentLine,
             draw-contour: true,
             round-corner: 6,
@@ -319,8 +319,8 @@ styles{
 
 @define callout(title, accentColor, bgColor){
     group(margin: 1, row-weight: 30){
-        rectangle(background: bgColor, color: documentLine, draw-contour: true, round-corner: 4)
-        rectangle(background: accentColor, position: (0, 0), size: (1.5, 100))
+        rectangle(background-color: bgColor, color: documentLine, draw-contour: true, round-corner: 4)
+        rectangle(background-color: accentColor, position: (0, 0), size: (1.5, 100))
         group(position: (4, 4), size: (92, 92), origin: top-left){
             text(either("${title}", ""), position: (0, 0), origin: top-left, font-bold, color: accentColor, font-size: 2.2%P)
             group(position: (0, 30), size: (100, 68), origin: top-left){
@@ -431,16 +431,16 @@ styles{
         }
 
         // Noir background
-        rectangle(background: documentBg)
+        rectangle(background-color: documentBg)
 
         // Editorial corner marks (top-left, bottom-right)
-        rectangle(position: (6, 6), size: (5, 0.2), background: documentColors[0])
-        rectangle(position: (6, 6), size: (0.2, 5), background: documentColors[0])
-        rectangle(position: (89, 94), size: (5, 0.2), background: documentColors[0])
-        rectangle(position: (94, 89), size: (0.2, 5), background: documentColors[0])
+        rectangle(position: (6, 6), size: (5, 0.2), background-color: documentColors[0])
+        rectangle(position: (6, 6), size: (0.2, 5), background-color: documentColors[0])
+        rectangle(position: (89, 94), size: (5, 0.2), background-color: documentColors[0])
+        rectangle(position: (94, 89), size: (0.2, 5), background-color: documentColors[0])
 
         // Accent rule under subtitle block
-        rectangle(position: (8, 58), size: (12, 0.3), background: documentColors[0])
+        rectangle(position: (8, 58), size: (12, 0.3), background-color: documentColors[0])
 
         @(kicker)      text(either("${documentChapter}", "Presentation"))
         @(title)       text("${documentTitle}")
@@ -489,7 +489,7 @@ styles{
 
 @define content-slide(title){
     page{
-        rectangle(background: documentBg)
+        rectangle(background-color: documentBg)
 
         @define header{
             group(
@@ -498,7 +498,7 @@ styles{
                 origin: top-left
             ){
                 // Accent tick + chapter kicker
-                rectangle(position: (3, 30), size: (2.2, 2.5), background: documentColors[0])
+                rectangle(position: (3, 30), size: (2.2, 2.5), background-color: documentColors[0])
                 text(
                     either("${documentChapter}", "${documentTitle}"),
                     position: (6.5, 32),
@@ -522,7 +522,7 @@ styles{
                 rectangle(
                     position: (0, 98),
                     size: (100, 0.15),
-                    background: documentLine
+                    background-color: documentLine
                 )
 
                 body
@@ -721,7 +721,7 @@ styles{
 
 @define thankyou-slide(title:""){
     page{
-        rectangle(background: documentBg)
+        rectangle(background-color: documentBg)
 
         styles{
             (.kicker){
@@ -766,13 +766,13 @@ styles{
         }
 
         // Editorial corner marks, mirrored from the cover
-        rectangle(position: (6, 6), size: (5, 0.2), background: documentColors[0])
-        rectangle(position: (6, 6), size: (0.2, 5), background: documentColors[0])
-        rectangle(position: (89, 94), size: (5, 0.2), background: documentColors[0])
-        rectangle(position: (94, 89), size: (0.2, 5), background: documentColors[0])
+        rectangle(position: (6, 6), size: (5, 0.2), background-color: documentColors[0])
+        rectangle(position: (6, 6), size: (0.2, 5), background-color: documentColors[0])
+        rectangle(position: (89, 94), size: (5, 0.2), background-color: documentColors[0])
+        rectangle(position: (94, 89), size: (0.2, 5), background-color: documentColors[0])
 
         // Accent rule
-        rectangle(position: (8, 60), size: (12, 0.3), background: documentColors[0])
+        rectangle(position: (8, 60), size: (12, 0.3), background-color: documentColors[0])
 
         @(kicker)            text("Thank You")
         @(thankyou-title)    text(either("${title}", "Questions?"))

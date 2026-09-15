@@ -51,7 +51,7 @@ documentColors:=arrayLeftRotate([
 
 // Neutral surface & text variables (harmonized with meridian)
 documentBg:="#ffffff"            // page background — pure white
-documentSurface:="#f8fafc"       // raised panel / card surface
+documentSurface:="#d9e2ec"       // raised panel / card surface
 documentSurfaceAlt:="#f1f5f9"    // secondary panel surface
 documentLine:="#e2e8f0"          // hairline dividers / borders
 documentTextPrimary:="#0f172a"   // primary text — dark slate
@@ -89,14 +89,14 @@ styles{
         source-comments-color: "#94a3b8"
         source-number-color: "#fbbf24"
         source-keyword-font-bold
-        background: "#0a192f"
+        background-color: "#0a192f"
         color: "#f8fafc"
         draw-contour: true
         padding: (1%P, 0.5%P)
     }
 
     page{
-        background: "#ffffff"
+        background-color: "#ffffff"
     }
 
     text{
@@ -108,7 +108,7 @@ styles{
         at: left,
     }
     (.ul-bullet){
-        background: documentColors[1]
+        background-color: documentColors[1]
         at: left,
         size: 2%P,
         bullet-align: top
@@ -170,11 +170,11 @@ styles{
 
 @define card(accentColor: ""){
     group(margin: 1, row-weight: 70){
-        rectangle(background: documentSurface, color: documentLine, draw-contour: true, round-corner: 4)
-        rectangle(background: either(accentColor, documentColors[0]), position: (0, 6), size: (0.35%P, 88))
+        rectangle(background-color: documentSurface, color: documentLine, draw-contour: true, round-corner: 4)
+        rectangle(background-color: either(accentColor, documentColors[0]), position: (0, 6), size: (0.35%P, 88))
         @define kicker(text, color: ""){
             group(position: (4, 3), size: (92, 8), origin: top-left){
-                rectangle(position: (0, 50), size: (1.2%P, 0.35%P), origin: left, background: either(color, either(accentColor, documentColors[0])))
+                rectangle(position: (0, 50), size: (1.2%P, 0.35%P), origin: left, background-color: either(color, either(accentColor, documentColors[0])))
                 text("${text}", position: (1.8%P, 50), origin: left, font-size: 2.2%P, font-bold, color: either(color, either(accentColor, documentColors[0])))
             }
         }
@@ -235,13 +235,13 @@ styles{
 
 @define kicker(text, color: ""){
     group(size: (100, 6)){
-        rectangle(position: (0, 50), size: (1.2%P, 0.35%P), origin: left, background: either(color, documentColors[0]))
+        rectangle(position: (0, 50), size: (1.2%P, 0.35%P), origin: left, background-color: either(color, documentColors[0]))
         text("${text}", position: (1.8%P, 50), origin: left, font-size: 2.2%P, font-bold, color: either(color, documentColors[0]))
     }
 }
 
 @define divider(width: 40, thickness: 0.3){
-    rectangle(size: (width, thickness), background: documentColors[0])
+    rectangle(size: (width, thickness), background-color: documentColors[0])
 }
 
 @define stat(value, label){
@@ -253,7 +253,7 @@ styles{
 
 @define quote(author: ""){
     group(margin: 3){
-        rectangle(background: documentColors[0], position: (0, 4), size: (0.35%P, 92))
+        rectangle(background-color: documentColors[0], position: (0, 4), size: (0.35%P, 92))
         group(position: (5, 4), size: (93, 92)){
             body
             text(either("${author}", ""), position: (0, 92), font-size: 3%P, color: documentTextSecondary, font-bold)
@@ -264,7 +264,7 @@ styles{
 @define panel(background: ""){
     group(margin: 2){
         rectangle(
-            background: either(background, "#f8fafc"),
+            background-color: either(background, "#f8fafc"),
             color: documentLine,
             draw-contour: true,
             round-corner: 6,
@@ -278,8 +278,8 @@ styles{
 
 @define callout(title, accentColor, bgColor){
     group(margin: 2){
-        rectangle(background: bgColor, color: accentColor, draw-contour: true, round-corner: 6)
-        rectangle(background: accentColor, position: (0, 0), size: (1.5, 100))
+        rectangle(background-color: bgColor, color: accentColor, draw-contour: true, round-corner: 6)
+        rectangle(background-color: accentColor, position: (0, 0), size: (1.5, 100))
         group(position: (3, 2), size: (95, 96)){
             text(either("$title", ""), font-bold, color: accentColor, font-size: 3.5%P)
             body
@@ -420,33 +420,33 @@ styles{
         }
 
         // Clean white background
-        rectangle(background: "#ffffff")
+        rectangle(background-color: "#ffffff")
 
         // ── Full-height left navy sidebar (wider than content slides for emphasis)
         rectangle(
             position: (0, 0),
             size: (2.5, 100),
-            background: "#003366"
+            background-color: "#003366"
         )
         // Azure accent stripe
         rectangle(
             position: (2.5, 0),
             size: (0.6, 100),
-            background: "#0284c7"
+            background-color: "#0284c7"
         )
 
         // Institutional header area background
         rectangle(
             position: (3.1, 0),
             size: (96.9, 13),
-            background: "#f8fafc"
+            background-color: "#f8fafc"
         )
 
         // Institution header bottom rule
         rectangle(
             position: (3.1, 13),
             size: (96.9, 0.25),
-            background: "#e2e8f0"
+            background-color: "#e2e8f0"
         )
 
         // Institutional text
@@ -459,12 +459,12 @@ styles{
         rectangle(
             position: (20, 66),
             size: (60, 0.5),
-            background: "#0284c7"
+            background-color: "#0284c7"
         )
         rectangle(
             position: (36, 68),
             size: (28, 0.2),
-            background: "#e2e8f0"
+            background-color: "#e2e8f0"
         )
 
         @(title)       text("${documentTitle}")
@@ -512,19 +512,19 @@ styles{
 
 @define content-slide(title:""){
     page{
-        rectangle(background: "#f8fafc")
+        rectangle(background-color: "#f8fafc")
 
         // ── Left navy sidebar ─────────────────────────────────────────────
         rectangle(
             position: (0, 0),
             size: (1.2, 100),
-            background: "#003366"
+            background-color: "#003366"
         )
         // Azure accent stripe next to sidebar
         rectangle(
             position: (1.2, 0),
             size: (0.4, 100),
-            background: "#0284c7"
+            background-color: "#0284c7"
         )
 
         // ── Header ────────────────────────────────────────────────────────
@@ -535,20 +535,20 @@ styles{
                 origin: top-left
             ){
                 // White header background
-                rectangle(background: "#ffffff")
+                rectangle(background-color: "#ffffff")
 
                 // Header bottom rule
                 rectangle(
                     position: (0, 97),
                     size: (100, 0.5),
-                    background: "#e2e8f0"
+                    background-color: "#e2e8f0"
                 )
 
                 // Azure underline beneath the title block
                 rectangle(
                     position: (0, 94),
                     size: (28, 3.5),
-                    background: "#0284c7"
+                    background-color: "#0284c7"
                 )
 
                 // Slide title
@@ -729,14 +729,14 @@ styles{
         rectangle(
             position: (1.6, 96.5),
             size: (98.4, 0.2),
-            background: "#e2e8f0"
+            background-color: "#e2e8f0"
         )
 
         // Small azure dot marker in footer
         ellipse(
             position: (2.6, 98.4),
             size: (0.7, 1.2),
-            background: "#0284c7"
+            background-color: "#0284c7"
         )
 
         // Footer left: document title
@@ -796,7 +796,7 @@ styles{
 
 @define thankyou-slide(title:"", author:""){
     page{
-        rectangle(background: "#ffffff")
+        rectangle(background-color: "#ffffff")
 
         styles{
             (.title){
@@ -836,24 +836,24 @@ styles{
         rectangle(
             position: (0, 0),
             size: (2.5, 100),
-            background: "#003366"
+            background-color: "#003366"
         )
         rectangle(
             position: (2.5, 0),
             size: (0.6, 100),
-            background: "#0284c7"
+            background-color: "#0284c7"
         )
 
         // Header area background
         rectangle(
             position: (3.1, 0),
             size: (96.9, 13),
-            background: "#f8fafc"
+            background-color: "#f8fafc"
         )
         rectangle(
             position: (3.1, 13),
             size: (96.9, 0.25),
-            background: "#e2e8f0"
+            background-color: "#e2e8f0"
         )
 
         // Institutional header
@@ -872,12 +872,12 @@ styles{
         rectangle(
             position: (20, 63),
             size: (60, 0.5),
-            background: "#0284c7"
+            background-color: "#0284c7"
         )
         rectangle(
             position: (36, 65),
             size: (28, 0.2),
-            background: "#e2e8f0"
+            background-color: "#e2e8f0"
         )
 
         @(title)    text(either("$title", "Merci pour votre attention"))

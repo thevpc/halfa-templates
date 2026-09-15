@@ -64,7 +64,7 @@ styles{
         at:left,
     }
     (.ul-bullet){
-        background: documentColors[1]
+        background-color: documentColors[1]
         at:left,
         size:3%P
     }
@@ -107,7 +107,7 @@ styles{
            origin : top-left,
            position : (0.5,1),
            size : (1,2),
-           background: documentColors[1],
+           background-color: documentColors[1],
            rotate:0
            color:gray
            draw-contour
@@ -116,7 +116,7 @@ styles{
            origin : top-left,
            position : (0.5,3),
            size : (1,2),
-           background: documentColors[2],
+           background-color: documentColors[2],
            color:gray
            rotate:0
            draw-contour
@@ -125,7 +125,7 @@ styles{
            origin : top-left,
            position : (0.5,5),
            size : (1,2),
-           background: documentColors[3],
+           background-color: documentColors[3],
            rotate:0
            color:gray
            draw-contour
@@ -134,7 +134,7 @@ styles{
            origin : top-left,
            position : (0.5,7),
            size : (1,2),
-           background: documentColors[4],
+           background-color: documentColors[4],
            rotate:0
            color:gray
            draw-contour
@@ -143,7 +143,7 @@ styles{
            origin : top-left,
            position : (0.5,9),
            size : (1,2),
-           background: documentColors[5],
+           background-color: documentColors[5],
            rotate:0
            color:gray
            draw-contour
@@ -152,7 +152,7 @@ styles{
            origin : top-left,
            position : (0.5,11),
            size : (1,2),
-           background: documentColors[6],
+           background-color: documentColors[6],
            rotate:0
            color:gray
            draw-contour
@@ -161,7 +161,7 @@ styles{
            origin : top-left,
            position : (1.5,1.5),
            size : (1,2),
-           background: documentColors[7],
+           background-color: documentColors[7],
            rotate:0
            color:gray
            draw-contour
@@ -170,7 +170,7 @@ styles{
            origin : top-left,
            position : (1.5,3.5),
            size : (1,2),
-           background: documentColors[8],
+           background-color: documentColors[8],
            rotate:0
            color:gray
            draw-contour
@@ -179,7 +179,7 @@ styles{
            origin : top-left,
            position : (1.5,5.5),
            size : (1,2),
-           background: documentColors[9],
+           background-color: documentColors[9],
            rotate:0
            color:gray
            draw-contour
@@ -188,7 +188,7 @@ styles{
            origin : top-left,
            position : (1.5,7.5),
            size : (1,2),
-           background: documentColors[10],
+           background-color: documentColors[10],
            rotate:0
            color:gray
            draw-contour
@@ -197,7 +197,7 @@ styles{
            origin : top-left,
            position : (1.5,9.5),
            size : (1,2),
-           background: documentColors[11],
+           background-color: documentColors[11],
            rotate:0
            color:gray
            draw-contour
@@ -206,7 +206,7 @@ styles{
            origin : top-left,
            position : (1.5,11.5),
            size : (1,2),
-           background: documentColors[12],
+           background-color: documentColors[12],
            rotate:0
            color:gray
            draw-contour
@@ -540,7 +540,7 @@ styles{
                size : (100,30),
                font-size: 15%P,
                font-bold,
-               background: documentColors[1],
+               background-color: documentColors[1],
            }
            (.subtitle){
                color: "#2c779a"
@@ -572,7 +572,7 @@ styles{
            },
         }
        rectangle(
-           background: white,
+           background-color: white,
        )
         @(title)    text(either("$title","Thank you")),
         @(author)     text(either("${documentAuthor}","")),
