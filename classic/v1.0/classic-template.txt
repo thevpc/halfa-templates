@@ -565,6 +565,7 @@ styles{
                     "*" :{
                         color: documentColors[1],
                         foreground-color:white,
+                        line-color:white,
                         font-size:20,
                         font-bold
                     }
@@ -592,6 +593,7 @@ styles{
     //            "*" :{
     //                color: documentColors[1],
     //                foreground-color:white,
+    //                line-color:white,
     //                font-size:20,
     //                font-bold
     //            }
@@ -618,6 +620,7 @@ styles{
     //            "*" :{
     //                color: documentColors[1],
     //                foreground-color:white,
+    //                line-color:white,
     //                font-size:20,
     //                font-bold
     //            }
@@ -647,6 +650,7 @@ styles{
                 styles:{
                     "*" :{
                         foreground-color:dark-gray
+                        line-color:dark-gray
                     }
                 }
                 body
@@ -663,6 +667,7 @@ styles{
                 styles:{
                     "*" :{
                         foreground-color:dark-gray
+                        line-color:dark-gray
                     }
                 }
                 body
@@ -680,6 +685,7 @@ styles{
                 styles:{
                     "*" :{
                         foreground-color:dark-gray
+                        line-color:dark-gray
                     }
                 }
                 body
@@ -697,6 +703,7 @@ styles{
                 styles:{
                     "*" :{
                         foreground-color:dark-gray
+                        line-color:dark-gray
                     }
                 }
                 body
@@ -714,6 +721,7 @@ styles{
                 styles:{
                     "*" :{
                         foreground-color:dark-gray
+                        line-color:dark-gray
                     }
                 }
                 body
@@ -730,6 +738,7 @@ styles{
                 styles:{
                     "*" :{
                         foreground-color:dark-gray
+                        line-color:dark-gray
                     }
                 }
                 body
@@ -835,6 +844,7 @@ styles{
                     "*" :{
                         color: documentColors[1],
                         foreground-color:white,
+                        line-color:white,
                         font-size:20,
                         font-bold
                     }
@@ -862,6 +872,7 @@ styles{
     //            "*" :{
     //                color: documentColors[1],
     //                foreground-color:white,
+    //                line-color:white,
     //                font-size:20,
     //                font-bold
     //            }
@@ -888,6 +899,7 @@ styles{
     //            "*" :{
     //                color: documentColors[1],
     //                foreground-color:white,
+    //                line-color:white,
     //                font-size:20,
     //                font-bold
     //            }
@@ -917,6 +929,7 @@ styles{
                 styles:{
                     "*" :{
                         foreground-color:dark-gray
+                        line-color:dark-gray
                     }
                 }
                 body
@@ -933,6 +946,7 @@ styles{
                 styles:{
                     "*" :{
                         foreground-color:dark-gray
+                        line-color:dark-gray
                     }
                 }
                 body
@@ -950,6 +964,7 @@ styles{
                 styles:{
                     "*" :{
                         foreground-color:dark-gray
+                        line-color:dark-gray
                     }
                 }
                 body
@@ -967,6 +982,7 @@ styles{
                 styles:{
                     "*" :{
                         foreground-color:dark-gray
+                        line-color:dark-gray
                     }
                 }
                 body
@@ -984,6 +1000,7 @@ styles{
                 styles:{
                     "*" :{
                         foreground-color:dark-gray
+                        line-color:dark-gray
                     }
                 }
                 body
@@ -1000,6 +1017,7 @@ styles{
                 styles:{
                     "*" :{
                         foreground-color:dark-gray
+                        line-color:dark-gray
                     }
                 }
                 body
@@ -1105,6 +1123,7 @@ styles{
                     "*" :{
                         color: documentColors[1],
                         foreground-color:white,
+                        line-color:white,
                         font-size:20,
                         font-bold
                     }
@@ -1132,6 +1151,7 @@ styles{
     //            "*" :{
     //                color: documentColors[1],
     //                foreground-color:white,
+    //                line-color:white,
     //                font-size:20,
     //                font-bold
     //            }
@@ -1158,6 +1178,7 @@ styles{
     //            "*" :{
     //                color: documentColors[1],
     //                foreground-color:white,
+    //                line-color:white,
     //                font-size:20,
     //                font-bold
     //            }
@@ -1187,6 +1208,7 @@ styles{
                 styles:{
                     "*" :{
                         foreground-color:dark-gray
+                        line-color:dark-gray
                     }
                 }
                 body
@@ -1203,6 +1225,7 @@ styles{
                 styles:{
                     "*" :{
                         foreground-color:dark-gray
+                        line-color:dark-gray
                     }
                 }
                 body
@@ -1220,6 +1243,7 @@ styles{
                 styles:{
                     "*" :{
                         foreground-color:dark-gray
+                        line-color:dark-gray
                     }
                 }
                 body
@@ -1237,6 +1261,7 @@ styles{
                 styles:{
                     "*" :{
                         foreground-color:dark-gray
+                        line-color:dark-gray
                     }
                 }
                 body
@@ -1254,6 +1279,7 @@ styles{
                 styles:{
                     "*" :{
                         foreground-color:dark-gray
+                        line-color:dark-gray
                     }
                 }
                 body
@@ -1270,6 +1296,7 @@ styles{
                 styles:{
                     "*" :{
                         foreground-color:dark-gray
+                        line-color:dark-gray
                     }
                 }
                 body

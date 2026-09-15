@@ -27,6 +27,7 @@
                 styles:{
                     "*" :{
                         foreground-color:dark-gray
+                        line-color:dark-gray
                         color:white
                     }
                 }
